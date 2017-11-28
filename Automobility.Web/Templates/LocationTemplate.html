@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <link href="/bower_components/angular-material/angular-material.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
     <title></title>
 </head>
@@ -52,24 +53,7 @@
                 </div>
             </form>
         </div>
-        <!--<div ng-show="cc.pagesAvailable">
-            <p id="reportedPages">Page {{cc.searchModel.pageNumber}}</p>
-            <div class="modal-footer" ng-hide="cc.flaggedContent.adminAction === 'No Action'">
-
-                <div style="padding-right: 100px;">
-                    <button class="btn btn-gray btn-rounded thisButton" style="cursor:default;" ng-click="cc.dynamicButton(1) " ng-disabled="cc.pagSettings.pageNumber == 1">«</button>
-                    <button class="btn btn-gray btn-rounded thisButton" style="cursor:default;" ng-click="cc.decrementPagNum()" ng-disabled="cc.pagSettings.pageNumber == 1">prev</button>
-
-                    <button class="btn btn-gray btn-rounded target" style="cursor:default;" ng-click="cc.dynamicButton(cc.pagSettings.firstButton)" ng-disabled="cc.pagSettings.firstButton == cc.pagSettings.pageNumber">{{cc.pagSettings.firstButton}}</button>
-                    <button class="btn btn-gray btn-rounded target" style="cursor:default;" ng-click="cc.dynamicButton(cc.pagSettings.secondButton)" ng-disabled="cc.pagSettings.secondButton == cc.pagSettings.pageNumber || cc.pagSettings.secondButton > cc.pagSettings.totalPages">{{cc.pagSettings.secondButton}}</button>
-                    <button class="btn btn-gray btn-rounded target" style="cursor:default;" ng-click="cc.dynamicButton(cc.pagSettings.thirdButton)" ng-disabled="cc.pagSettings.thirdButton == cc.pagSettings.pageNumber || cc.pagSettings.thirdButton > cc.pagSettings.totalPages">{{cc.pagSettings.thirdButton}}</button>
-
-                    <button class="btn btn-gray btn-rounded" style="cursor:default;" ng-click="cc.incrementPagNum()" ng-disabled="cc.pagSettings.pageNumber == cc.pagSettings.totalPages">next</button>
-                    <button class="btn btn-gray btn-rounded" style="cursor:default;" ng-click="cc.dynamicButton(cc.pagSettings.totalPages)" ng-disabled="cc.pagSettings.pageNumber == cc.pagSettings.totalPages">»</button>
-                </div>
-
-            </div>
-        </div>-->
+       
     </div>
 
     <script src="../Scripts/jquery-3.1.1.min.js"></script>
@@ -77,6 +61,10 @@
     <script src="../Scripts/angular.min.js"></script>
     <script src="../Scripts/Site/app.js"></script>
     <script src="../Scripts/Controller/ItineraryController.js"></script>
+    <script src="~/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="~/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="~/bower_components/angular-messages/angular-messages.js"></script>
+    <script src="~/bower_components/angular-material/angular-material.js"></script>
 
 
 </body>
