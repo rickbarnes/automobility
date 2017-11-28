@@ -40,3 +40,23 @@ md-input-container {
     display: block;
     text-align: center;
 }
+
+/*Grid Css*/
+.grid-list .green {
+    background: #10A453;
+}
+
+.grid-list .yellow {
+    background: #EBF937;
+}
+
+.grid-list .red {
+    background: #ED4429;
+
+}
+
+.grid-list .blue {
+    background: #01ACEE;
+}
+
+/*green - #10a453 yellow - ebf937 red - ed4429 blue - 01acee black - 090909*/
