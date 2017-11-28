@@ -31,7 +31,7 @@
             vm.string = '';
 
             vm.getToken = _getToken;
-            vm.postEntity = _postEntity;
+            //vm.postEntity = _postEntity;
             vm.postEntitySuccess = _postEntitySuccess;
             vm.postEntityError = _postEntityError;
 
@@ -53,39 +53,45 @@
                 "Content-Type": "application/x-www-form-urlencoded"
             }
 
-            function _getToken() {
-                //mainService.post("https://auth.smartcar.com/oauth/token", vm.postModel);
+            vm.data = "grant_type=authorization_code&code=" + vm.string + "&redirect_uri=http://localhost:3024";
 
-                vm.postEntity(vm.postModel, vm.postEntitySuccess, vm.postEntityError);
+            function _getToken() {
+                console.log(vm.data);
+                console.log(vm.postModel);
+                mainService.post("https://auth.smartcar.com/oauth/token", vm.data, vm.postModel)
+                    .then(_postEntitySuccess)
+                    .catch(_postEntityError);
+
+                //vm.postEntity(vm.postModel, vm.postEntitySuccess, vm.postEntityError);
 
             }
 
             // post method
-            function _postEntity(entityData, onSuccess, onError) {
+            //function _postEntity(entityData, onSuccess, onError) {
 
-                var url = "https://auth.smartcar.com/oauth/token";
+            //    var url = "https://auth.smartcar.com/oauth/token";
 
-                $.ajaxSetup({
+            //    $.ajaxSetup({
 
-                    headers: {
-                        'Authorization': 'Basic base64(d0d419a5-ca7d-4e34-9fd4-cccf4bddd33f:2ee05bc8-f40c-4868-984d-6cf76facf3d2)',
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'Access-Control-Allow-Origin': '*'
-                    }
+            //        headers: {
+            //            'Authorization': 'Basic base64(d0d419a5-ca7d-4e34-9fd4-cccf4bddd33f:2ee05bc8-f40c-4868-984d-6cf76facf3d2)',
+            //            'Content-Type': 'application/x-www-form-urlencoded',
+            //            'Access-Control-Allow-Origin': '*'
+            //        }
 
-                });
+            //    });
 
-                var settings = {
-                    cache: false // set to false so we always obtain the latest data
-                    , contentType: "application/x-www-form-urlencoded; charset=UTF-8" // format of the data being sent to the database
-                    , dataType   : "json" // format of the data we're receiving back in our responses
-                    , data       : entityData
-                    , success    : onSuccess // showing what will happen on successes
-                    , error      : onError // showing what will happen on errors
-                    , type       : "POST" // method
-                };
-                $.ajax(url, settings);
-            }
+            //    var settings = {
+            //        cache: false // set to false so we always obtain the latest data
+            //        , contentType: "application/x-www-form-urlencoded; charset=UTF-8" // format of the data being sent to the database
+            //        , dataType   : "json" // format of the data we're receiving back in our responses
+            //        , data       : entityData
+            //        , success    : onSuccess // showing what will happen on successes
+            //        , error      : onError // showing what will happen on errors
+            //        , type       : "POST" // method
+            //    };
+            //    $.ajax(url, settings);
+            //}
 
             function _postEntitySuccess(response) {
 
@@ -97,7 +103,7 @@
 
             function _postEntityError(data, status, xhr) {
 
-                console.log('post error');
+                console.log(data);
 
                 console.log('bruh, do you even code??!');
                 console.log(data.responseText + ' ' + data.status + ' ' + xhr);

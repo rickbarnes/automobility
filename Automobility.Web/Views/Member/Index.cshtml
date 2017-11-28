@@ -38,11 +38,20 @@
             <br />
             <br />
             <div class="col-xs-12">
-                <form>
-                    <md-input-container class="maxWidth text-center" layout-align="center center">
+                <form ng-submit="$event.preventDefault()">
+                    <md-autocomplete class="autocomplete" md-no-cache="homeCtrl.noCache" md-selected-item="homeCtrl.selectedItem" md-search-text-change="homeCtrl.searchTextChange(homeCtrl.searchText)" md-search-text="homeCtrl.searchText" md-selected-item-change="homeCtrl.selectedItemChange(item)" md-items="item in homeCtrl.querySearch(homeCtrl.searchText)" md-item-text="item.display" md-min-length="0" placeholder="Where would you like to go?">
+                        <md-item-template>
+                            <span md-highlight-text="homeCtrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            No states matching "{{homeCtrl.searchText}}" were found.
+                            <a ng-click="homeCtrl.newState(homeCtrl.searchText)">Create a new one!</a>
+                        </md-not-found>
+                    </md-autocomplete>
+                    @*<md-input-container class="maxWidth text-center" layout-align="center center">
                         <label>Where would you like to go?</label>
                         <input type="text" ng-model="homeCtrl.search" class="md-input" />
-                    </md-input-container>
+                    </md-input-container>*@
                 </form>
             </div>
         </div>
@@ -52,8 +61,14 @@
 
     <!-- end search input -->
     <div class="myPadding">
-        <h2 class="text-center">Plan your trip</h2>
-        <div class="grid-list">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 id="planYourTrip" class="text-center">Plan your trip</h2>
+                <h2 id="backBtn" class="text-center"><span class="pull-left" ng-click="homeCtrl.closeDetail()"><md-icon md-font-icon="fa-arrow-left" class="fa fa-md fa-md md-icon-button"></md-icon></span>Go back</h2>
+            </div>
+        </div>
+        <!-- this is the default div on load-->
+        <div class="grid-list" id="grid">
             <md-grid-list md-cols-xs="2" md-cols-sm="2" md-cols-md="2" md-cols-gt-md="2" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px">
                 <md-grid-tile class="green">
                     <md-icon md-font-icon="fa-futbol-o" class="fa fa-5x"></md-icon>
@@ -61,21 +76,18 @@
                         <h3>Olympics</h3>
                     </md-grid-tile-footer>
                 </md-grid-tile>
-
-                <md-grid-tile class="yellow" ng-click="homeCtrl.showDetails('rest')">
+                <md-grid-tile class="yellow" ng-click="homeCtrl.showFood()">
                     <md-icon md-font-icon="fa-cutlery" class="fa fa-5x"></md-icon>
                     <md-grid-tile-footer>
                         <h3>Food</h3>
                     </md-grid-tile-footer>
                 </md-grid-tile>
-
-                <md-grid-tile class="red" ng-click="homeCtrl.showDetails('landmarks')">
+                <md-grid-tile class="red" ng-click="homeCtrl.showLandmarks()">
                     <md-icon md-font-icon="fa-binoculars" class="fa fa-5x"></md-icon>
                     <md-grid-tile-footer>
                         <h3>Landmarks</h3>
                     </md-grid-tile-footer>
                 </md-grid-tile>
-
                 <md-grid-tile class="blue">
                     <md-icon md-font-icon="fa-thumbs-o-up" class="fa fa-5x"></md-icon>
                     <md-grid-tile-footer>
@@ -84,33 +96,58 @@
                 </md-grid-tile>
             </md-grid-list>
         </div>
-    </div>
-</div>
+        <!-- this is the details div -->
+        <div id="landmarks" layout="column">
+            <md-content flex class="myHeight">
+                <div ng-repeat="item in homeCtrl.landmarkModel">
+                    <md-card>
+                        <img ng-src="{{item.Image}}" class="md-card-image" alt="Washed Out">
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">{{item.Name}} - {{item.Distance}} away</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                            <address>
+                                {{item.Address}}
+                                {{item.City}}
+                            </address>
 
-<!-- cateogry details modal -->
-<div id="detailsModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
-            </div>
-            <div class="modal-body" ng-repeat="model in homeCtrl.model">
-                        <!--<img class="commentImg" ng-src="/Images/CocaCola.jpg" style="height: 3em; width: 2.75em; margin: 0 auto; display: block; margin-top:35%;">-->
-                        <img src="{{model.Image}}" style="height:100%; width:auto;" />
-                        <div>{{model.Name}}</div>
-                        <div>{{model.Address}}</div>
-                        <div>{{model.City}}</div>
-                        <div>{{model.Price}}</div>
-                        <p>{{model.Distance}}</p>
-                        <p>{{model.PhoneNumber}}</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
+                            <p><strong>Phone Number: </strong>{{item.PhoneNumber}}</p>
+                        </md-card-content>
+                        <md-card-actions layout="row" layout-align="end center">
+                            <md-button ng-click="homeCtrl.model = item; homeCtrl.showPrompt()">Add to Plan</md-button>
+                            <md-button>Visit Now</md-button>
+                        </md-card-actions>
+                    </md-card>
+                </div>
+            </md-content>
         </div>
+        <div id="food" layout="column">
+            <md-content flex class="myHeight">
+                <div ng-repeat="item in homeCtrl.restaurantsModel">
+                    <md-card>
+                        <img ng-src="{{item.Image}}" class="md-card-image" alt="Washed Out">
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">{{item.Name}} - {{item.Distance}} away</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                            <address>
+                                {{item.Address}}
+                                {{item.City}}
+                            </address>
 
+                            <p><strong>Phone Number: </strong>{{item.PhoneNumber}}</p>
+                        </md-card-content>
+                        <md-card-actions layout="row" layout-align="end center">
+                            <md-button>Add to Plan</md-button>
+                            <md-button>Visit Now</md-button>
+                        </md-card-actions>
+                    </md-card>
+                </div>
+            </md-content>
+        </div>
     </div>
 </div>

@@ -1428,7 +1428,6 @@
     <Content Include="Scripts\angular-ui-router.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\Controller\home.controller.js" />
     <Content Include="Scripts\Controller\ItineraryController.js" />
     <Content Include="Scripts\Controllers\SignalRController.js" />
     <Content Include="Scripts\jquery.signalR-2.2.2.js" />
