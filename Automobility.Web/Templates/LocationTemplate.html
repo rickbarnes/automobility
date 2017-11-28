@@ -31,17 +31,17 @@
             <form name="List">
                 <div class="form-group list-group-item">
                     <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-xs-2">
                             <!--<img class="commentImg" ng-src="/Images/CocaCola.jpg" style="height: 3em; width: 2.75em; margin: 0 auto; display: block; margin-top:35%;">-->
                             <img src="{{model.Image}}" style="height:100%; width:100%;" />
                         </div>
 
-                        <div class="col-md-5">
+                        <div class="col-xs-5">
                             <div>{{model.Name}}</div>
                             <div>{{model.Price}}</div>
                             <p>{{model.Distance}}</p>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-xs-5">
                             <div>{{model.Address}}</div>
                             <div>{{model.City}}</div>
                             <p>{{model.PhoneNumber}}</p>
@@ -58,13 +58,14 @@
 
     <script src="../Scripts/jquery-3.1.1.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
-    <script src="../Scripts/angular.min.js"></script>
+    <!--<script src="../Scripts/angular.min.js"></script>-->
+    <script src="../bower_components/angular/angular.min.js"></script>
     <script src="../Scripts/Site/app.js"></script>
     <script src="../Scripts/Controller/ItineraryController.js"></script>
-    <script src="~/bower_components/angular-animate/angular-animate.js"></script>
-    <script src="~/bower_components/angular-aria/angular-aria.js"></script>
-    <script src="~/bower_components/angular-messages/angular-messages.js"></script>
-    <script src="~/bower_components/angular-material/angular-material.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script>
 
 
 </body>

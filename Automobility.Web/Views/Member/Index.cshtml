@@ -61,14 +61,14 @@
                     </md-grid-tile-footer>
                 </md-grid-tile>
 
-                <md-grid-tile class="yellow">
+                <md-grid-tile class="yellow" ng-click="homeCtrl.showRest()">
                     <md-icon md-font-icon="fa-cutlery" class="fa fa-5x"></md-icon>
                     <md-grid-tile-footer>
                         <h3>Food</h3>
                     </md-grid-tile-footer>
                 </md-grid-tile>
 
-                <md-grid-tile class="red">
+                <md-grid-tile class="red" ng-click="homeCtrl.showLandMark()">
                     <md-icon md-font-icon="fa-binoculars" class="fa fa-5x"></md-icon>
                     <md-grid-tile-footer>
                         <h3>Sights</h3>
@@ -85,6 +85,54 @@
             </md-grid-list>
         </div>
 
+
+    </div>
+    <div class="widget-body">
+        @*<div class="panel-body">
+            <div class="row" style="margin-top:2%;">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" id="find" value="" placeholder="Find Location">
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" id="find" value="" placeholder="Near">
+                </div>
+                <div class="col-md-2">
+                    <button type="button">Search</button>
+
+                </div>
+
+                <div class="col-md-12" style="margin-top:.5%;">
+                    <button type="button" ng-click="ic.showRest()">Restaurants</button><button type="button" ng-click="ic.showLandMark()">Landmarks</button>
+                </div>
+            </div>
+        </div>
+        <br />*@
+        <div class="panel-body" ng-repeat="model in homeCtrl.model">
+            <form name="List">
+                <div class="form-group list-group-item">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <!--<img class="commentImg" ng-src="/Images/CocaCola.jpg" style="height: 3em; width: 2.75em; margin: 0 auto; display: block; margin-top:35%;">-->
+                            <img src="{{model.Image}}" style="height:100%; width:100%;" />
+                        </div>
+
+                        <div class="col-xs-5">
+                            <div>{{model.Name}}</div>
+                            <div>{{model.Price}}</div>
+                            <p>{{model.Distance}}</p>
+                        </div>
+                        <div class="col-xs-5">
+                            <div>{{model.Address}}</div>
+                            <div>{{model.City}}</div>
+                            <p>{{model.PhoneNumber}}</p>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </form>
+        </div>
 
     </div>
 
