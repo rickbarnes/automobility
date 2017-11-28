@@ -838,6 +838,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap1.css" />
+    <Content Include="Content\bootstrap1.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\theme.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
@@ -1392,6 +1394,8 @@
     <Content Include="fonts\ionicons.eot" />
     <Content Include="fonts\ionicons.ttf" />
     <Content Include="fonts\ionicons.woff" />
+    <Content Include="Content\bootstrap1.css.map" />
+    <Content Include="Content\bootstrap1.min.css.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1473,6 +1477,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Views\Home\SignUp.cshtml" />
+    <Content Include="Views\Shared\_MemberLayout.cshtml" />
     <Content Include="Views\Home\parkingZone.cshtml" />
   </ItemGroup>
   <ItemGroup>
