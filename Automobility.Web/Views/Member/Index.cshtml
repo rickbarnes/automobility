@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
 <br />
 
@@ -47,13 +48,10 @@
         </div>
     </div>
     <br />
-    <br />
-    <br />
-    <br />
 
 
     <!-- end search input -->
-    <div>
+    <div class="myPadding">
         <h2 class="text-center">Plan your trip</h2>
         <div class="grid-list">
             <md-grid-list md-cols-xs="2" md-cols-sm="2" md-cols-md="2" md-cols-gt-md="2" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px">
@@ -64,14 +62,14 @@
                     </md-grid-tile-footer>
                 </md-grid-tile>
 
-                <md-grid-tile class="yellow" ng-click="homeCtrl.showRest()">
+                <md-grid-tile class="yellow" ng-click="homeCtrl.showDetails('rest')">
                     <md-icon md-font-icon="fa-cutlery" class="fa fa-5x"></md-icon>
                     <md-grid-tile-footer>
                         <h3>Food</h3>
                     </md-grid-tile-footer>
                 </md-grid-tile>
 
-                <md-grid-tile class="red" ng-click="homeCtrl.showLandMark()">
+                <md-grid-tile class="red" ng-click="homeCtrl.showDetails('landmarks')">
                     <md-icon md-font-icon="fa-binoculars" class="fa fa-5x"></md-icon>
                     <md-grid-tile-footer>
                         <h3>Landmarks</h3>
@@ -84,61 +82,35 @@
                         <h3>Fun</h3>
                     </md-grid-tile-footer>
                 </md-grid-tile>
-
             </md-grid-list>
         </div>
-
-
     </div>
-    <div class="widget-body">
-        @*<div class="panel-body">
-            <div class="row" style="margin-top:2%;">
-                <div class="col-md-5">
-                    <input type="text" class="form-control" id="find" value="" placeholder="Find Location">
-                </div>
-                <div class="col-md-5">
-                    <input type="text" class="form-control" id="find" value="" placeholder="Near">
-                </div>
-                <div class="col-md-2">
-                    <button type="button">Search</button>
-
-                </div>
-
-                <div class="col-md-12" style="margin-top:.5%;">
-                    <button type="button" ng-click="ic.showRest()">Restaurants</button><button type="button" ng-click="ic.showLandMark()">Landmarks</button>
-                </div>
-            </div>
-        </div>
-        <br />*@
-        <div class="panel-body" ng-repeat="model in homeCtrl.model">
-            <form name="List">
-                <div class="form-group list-group-item">
-                    <div class="row">
-                        <div class="col-xs-2">
-                            <!--<img class="commentImg" ng-src="/Images/CocaCola.jpg" style="height: 3em; width: 2.75em; margin: 0 auto; display: block; margin-top:35%;">-->
-                            <img src="{{model.Image}}" style="height:100%; width:100%;" />
-                        </div>
-
-                        <div class="col-xs-5">
-                            <div>{{model.Name}}</div>
-                            <div>{{model.Price}}</div>
-                            <p>{{model.Distance}}</p>
-                        </div>
-                        <div class="col-xs-5">
-                            <div>{{model.Address}}</div>
-                            <div>{{model.City}}</div>
-                            <p>{{model.PhoneNumber}}</p>
-
-                        </div>
-
-
-                    </div>
-                </div>
-            </form>
-        </div>
-
-    </div>
-
 </div>
 
+<!-- cateogry details modal -->
+<div id="detailsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body" ng-repeat="model in homeCtrl.model">
+                        <!--<img class="commentImg" ng-src="/Images/CocaCola.jpg" style="height: 3em; width: 2.75em; margin: 0 auto; display: block; margin-top:35%;">-->
+                        <img src="{{model.Image}}" style="height:100%; width:auto;" />
+                        <div>{{model.Name}}</div>
+                        <div>{{model.Address}}</div>
+                        <div>{{model.City}}</div>
+                        <div>{{model.Price}}</div>
+                        <p>{{model.Distance}}</p>
+                        <p>{{model.PhoneNumber}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>

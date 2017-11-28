@@ -82,4 +82,8 @@ md-grid-tile-footer h3 {
     text-align: center;
 }
 
+.myPadding {
+    padding: 0px 5px;
+}
+
 /*green - #10a453 yellow - ebf937 red - ed4429 blue - 01acee black - 090909*/
