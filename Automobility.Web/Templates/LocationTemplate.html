@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="/bower_components/angular-material/angular-material.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <title></title>
+</head>
+<body>
+    <div class="widget-body" ng-app="HondaHack" ng-controller="itinController as ic">
+        <div class="panel-body">
+            <div class="row" style="margin-top:2%;">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" id="find" value="" placeholder="Find Location">
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" id="find" value="" placeholder="Near">
+                </div>
+                <div class="col-md-2">
+                    <button type="button">Search</button>
+                  
+                </div>
+                
+                <div class="col-md-12" style="margin-top:.5%;">
+                    <button type="button" ng-click="ic.showRest()">Restaurants</button><button type="button" ng-click="ic.showLandMark()">Landmarks</button>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="panel-body" ng-repeat="model in ic.model">
+            <form name="List">
+                <div class="form-group list-group-item">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <!--<img class="commentImg" ng-src="/Images/CocaCola.jpg" style="height: 3em; width: 2.75em; margin: 0 auto; display: block; margin-top:35%;">-->
+                            <img src="{{model.Image}}" style="height:100%; width:100%;" />
+                        </div>
+
+                        <div class="col-xs-5">
+                            <div>{{model.Name}}</div>
+                            <div>{{model.Price}}</div>
+                            <p>{{model.Distance}}</p>
+                        </div>
+                        <div class="col-xs-5">
+                            <div>{{model.Address}}</div>
+                            <div>{{model.City}}</div>
+                            <p>{{model.PhoneNumber}}</p>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </form>
+        </div>
+       
+    </div>
+
+    <script src="../Scripts/jquery-3.1.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <!--<script src="../Scripts/angular.min.js"></script>-->
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../Scripts/Site/app.js"></script>
+    <script src="../Scripts/Controller/ItineraryController.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script>
+
+
+</body>
+</html>
