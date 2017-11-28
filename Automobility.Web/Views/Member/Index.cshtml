@@ -2,8 +2,6 @@
     ViewBag.Title = "Index";
 }
 <br />
-<br />
-<br />
 
 <div ng-controller="homeController as homeCtrl" ng-cloak>
     <!-- start navbar -->
@@ -11,17 +9,19 @@
         <!-- header -->
         <md-toolbar class="md-theme-light">
             <div class="md-toolbar-tools">
-                <span><md-icon md-font-icon="fa-user-circle" class="fa fa-2x md-icon"></md-icon> Rick Barnes</span> 
+                <span><md-icon md-font-icon="fa-user-circle" class="fa fa-2x fa-md md-icon bp profileIcon"> </md-icon> Rick Barnes</span>
+            </div>
+            <div class="div-56">
+
             </div>
         </md-toolbar>
         <!-- menu options -->
-        <md-content layout-margin>
-            <md-button style="width: 100%" class="md-primary">Profile</md-button>
-            <md-button style="width: 100%" class="md-primary">History</md-button>
-            <md-button style="width: 100%" class="md-primary">Settings</md-button>
-            <md-button style="width: 100%" class="md-primary">Legal</md-button>
-            <md-button style="width: 100%" class="md-primary">Logout</md-button>
-            <md-button ng-click="homeCtrl.toggleLeft()" class="md-primary">Close</md-button>
+        <md-content layout-margin class="container">
+            <md-button class="md-primary">Profile</md-button>
+            <md-button class="md-primary">History</md-button>
+            <md-button class="md-primary">Settings</md-button>
+            <md-button class="md-primary">Legal</md-button>
+            <md-button class="md-primary">Logout</md-button>
         </md-content>
     </md-sidenav>
     <!-- end navbar -->
@@ -29,7 +29,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-1">
-                <md-icon ng-click="homeCtrl.toggleLeft()" md-font-icon="fa-bars" class="blackText fa fa-2x fa-md md-icon-button"></md-icon>
+                <span><md-icon ng-click="homeCtrl.toggleLeft()" md-font-icon="fa-bars" class="blackText fa fa-2x fa-md md-icon-button"></md-icon></span>
             </div>
         </div>
         <div class="row">
@@ -43,40 +43,43 @@
                         <input type="text" ng-model="homeCtrl.search" class="md-input" />
                     </md-input-container>
                 </form>
-
             </div>
         </div>
     </div>
+    <br />
+    <br />
 
     <!-- end search input -->
     <div>
-        <h1 class="text-center">Ideas</h1>
+        <h2 class="text-center">Plan your trip</h2>
         <div class="grid-list">
-            <md-grid-list  md-cols-xs="2" md-cols-sm="2" md-cols-md="2" md-cols-gt-md="2" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px">
+            <md-grid-list md-cols-xs="2" md-cols-sm="2" md-cols-md="2" md-cols-gt-md="2" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px">
                 <md-grid-tile class="green">
-                    <md-grid-tile-header class="text-center">
+                    <md-icon md-font-icon="fa-futbol-o" class="fa fa-5x"></md-icon>
+                    <md-grid-tile-footer>
                         <h3>Olympics</h3>
-                    </md-grid-tile-header>
-                    @*<md-grid-tile-footer>
-                    </md-grid-tile-footer>*@
+                    </md-grid-tile-footer>
                 </md-grid-tile>
-                    
+
                 <md-grid-tile class="yellow">
-                    <md-grid-tile-header>
+                    <md-icon md-font-icon="fa-cutlery" class="fa fa-5x"></md-icon>
+                    <md-grid-tile-footer>
                         <h3>Food</h3>
-                    </md-grid-tile-header>
+                    </md-grid-tile-footer>
                 </md-grid-tile>
 
                 <md-grid-tile class="red">
-                    <md-grid-tile-header>
+                    <md-icon md-font-icon="fa-binoculars" class="fa fa-5x"></md-icon>
+                    <md-grid-tile-footer>
                         <h3>Sights</h3>
-                    </md-grid-tile-header>
+                    </md-grid-tile-footer>
                 </md-grid-tile>
 
                 <md-grid-tile class="blue">
-                    <md-grid-tile-header>
+                    <md-icon md-font-icon="fa-thumbs-o-up" class="fa fa-5x"></md-icon>
+                    <md-grid-tile-footer>
                         <h3>Fun</h3>
-                    </md-grid-tile-header>
+                    </md-grid-tile-footer>
                 </md-grid-tile>
 
             </md-grid-list>
