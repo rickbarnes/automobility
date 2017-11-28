@@ -1478,6 +1478,7 @@
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Views\Home\SignUp.cshtml" />
     <Content Include="Views\Shared\_MemberLayout.cshtml" />
+    <Content Include="Views\Home\parkingZone.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
