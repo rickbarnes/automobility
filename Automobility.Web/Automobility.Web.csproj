@@ -1358,6 +1358,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Controller\addSpotController.js" />
+    <Content Include="Scripts\Controller\graphController.js" />
     <Content Include="Scripts\Controller\home.controller.js" />
     <Content Include="Scripts\Controller\ItineraryController.js" />
     <Content Include="Scripts\Controller\mapController.js" />
@@ -1368,6 +1369,7 @@
     <Content Include="Scripts\mainService.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Site\app.js" />
+    <Content Include="Scripts\Template\GraphTemplate.html" />
     <Content Include="Scripts\Template\MapTemplate.html" />
     <Content Include="Scripts\Vendor\theme.min.js" />
     <Content Include="Scripts\_references.js" />
