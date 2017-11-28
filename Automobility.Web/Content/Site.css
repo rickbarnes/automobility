@@ -22,3 +22,64 @@ select,
 textarea {
     max-width: 280px;
 }
+
+md-input-container {
+    width: 100%;
+    font-size: 23px;
+}
+
+.fa-md {
+    height: auto;
+}
+
+.blackText {
+    color: black;
+}
+
+.divCenter {
+    display: block;
+    text-align: center;
+}
+
+/*Grid Css*/
+.grid-list .green {
+    background: #10A453;
+}
+
+.grid-list .yellow {
+    background: #EBF937;
+}
+
+.grid-list .red {
+    background: #ED4429;
+
+}
+
+.grid-list .blue {
+    background: #01ACEE;
+}
+
+.md-primary {
+    width: 100%;
+}
+
+.profileIcon {
+    padding-right: 10px;
+}
+
+.bp {
+    padding-bottom: 3px;
+}
+
+.div-56 {
+    height: 10px;
+    background: linear-gradient(to bottom, #3F51B5, #ffffff);
+}
+
+md-grid-tile-footer h3 {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+/*green - #10a453 yellow - ebf937 red - ed4429 blue - 01acee black - 090909*/

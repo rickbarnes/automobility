@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "OAuth";
+}
+
+<h2>OAuth</h2>
+<div ng-controller="oAuthController as oac" ng-cloak>
+    <a href="https://mock.smartcar.com/oauth/authorize?response_type=code&client_id=d0d419a5-ca7d-4e34-9fd4-cccf4bddd33f&scope=read_odometer read_vehicle_info&redirect_uri=http://localhost:3024/oauth/smartcar">TEST</a>
+    {{oac.string}}
+    
+    <input type="button" value="Get Token" ng-click="oac.getToken()" />
+</div>
+
+@section scripts{
+<script src="~/Scripts/Site/app.js"></script>
+<script src="~/Scripts/mainService.js"></script>
+<script type="text/javascript">
+    (function () {
+        'use strict';
+        
+        angular
+            .module(AppName)
+            .controller("oAuthController", OAuthController);
+
+        OAuthController
+            .$inject = ["$scope", "mainService"];
+
+        function OAuthController($scope, mainService) {
+            var vm = this;
+            vm.postModel = {};
+            vm.string = '';
+
+            vm.getToken = _getToken;
+            vm.postEntity = _postEntity;
+            vm.postEntitySuccess = _postEntitySuccess;
+            vm.postEntityError = _postEntityError;
+
+            vm.$onInit = _init;
+
+            function _init() {
+
+            };
+
+            vm.string = window.location.search;
+            vm.string = vm.string.split("code=")[1];
+            if (vm.string)
+                console.log(vm.string);
+
+
+
+            vm.postModel = {
+                "Authorization": "Basic base64(d0d419a5-ca7d-4e34-9fd4-cccf4bddd33f:2ee05bc8-f40c-4868-984d-6cf76facf3d2)",
+                "Content-Type": "application/x-www-form-urlencoded"
+            }
+
+            function _getToken() {
+                //mainService.post("https://auth.smartcar.com/oauth/token", vm.postModel);
+
+                vm.postEntity(vm.postModel, vm.postEntitySuccess, vm.postEntityError);
+
+            }
+
+            // post method
+            function _postEntity(entityData, onSuccess, onError) {
+
+                var url = "https://auth.smartcar.com/oauth/token";
+
+                $.ajaxSetup({
+
+                    headers: {
+                        'Authorization': 'Basic base64(d0d419a5-ca7d-4e34-9fd4-cccf4bddd33f:2ee05bc8-f40c-4868-984d-6cf76facf3d2)',
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Access-Control-Allow-Origin': '*'
+                    }
+
+                });
+
+                var settings = {
+                    cache: false // set to false so we always obtain the latest data
+                    , contentType: "application/x-www-form-urlencoded; charset=UTF-8" // format of the data being sent to the database
+                    , dataType   : "json" // format of the data we're receiving back in our responses
+                    , data       : entityData
+                    , success    : onSuccess // showing what will happen on successes
+                    , error      : onError // showing what will happen on errors
+                    , type       : "POST" // method
+                };
+                $.ajax(url, settings);
+            }
+
+            function _postEntitySuccess(response) {
+
+                var id = response.item;
+
+                console.log(id);
+
+            }
+
+            function _postEntityError(data, status, xhr) {
+
+                console.log('post error');
+
+                console.log('bruh, do you even code??!');
+                console.log(data.responseText + ' ' + data.status + ' ' + xhr);
+            }
+
+        }
+    })();
+</script>
+}
