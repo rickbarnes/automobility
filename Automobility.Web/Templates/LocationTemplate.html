@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <link href="/bower_components/angular-material/angular-material.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">-->
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
     <title></title>
 </head>
 <body>
@@ -26,6 +27,7 @@
                 </div>
             </div>
         </div>
+        <map-graph>look here</map-graph>
         <br />
         <div class="panel-body" ng-repeat="model in ic.model">
             <form name="List">
@@ -60,8 +62,10 @@
     <script src="../Scripts/bootstrap.min.js"></script>
 
     <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
     <script src="../Scripts/Site/app.js"></script>
     <script src="../Scripts/Controller/ItineraryController.js"></script>
+    <script src="../Scripts/Controller/graphController.js"></script>
     <script src="/bower_components/angular-animate/angular-animate.js"></script>
     <script src="/bower_components/angular-aria/angular-aria.js"></script>
     <script src="/bower_components/angular-messages/angular-messages.js"></script>
