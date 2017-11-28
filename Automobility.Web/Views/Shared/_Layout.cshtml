@@ -7,11 +7,18 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <!-- material -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/theme.min.css" rel="stylesheet" />    
+    
     <link href="/bower_components/angular-material/angular-material.min.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/7c7ebae49e.js"></script>
+    <script src="~/Scripts/Vendor/theme.min.js"></script>
 </head>
 <body ng-app="HondaHack">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    @RenderBody()
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -29,8 +36,8 @@
                 </ul>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
+    </div>*@
+    @*<div class="container body-content">
         @RenderBody()
         @*<hr />*@
 
