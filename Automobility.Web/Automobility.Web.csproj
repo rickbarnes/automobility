@@ -891,6 +891,7 @@
     <None Include="packages.config" />
     <None Include="Project_Readme.html" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Views\Home\parkingZone.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

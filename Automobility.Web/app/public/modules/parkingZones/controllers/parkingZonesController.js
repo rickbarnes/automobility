@@ -1,11 +1,11 @@
 ﻿(function () {
 
-    angular.module(APP.NAME).controller("parkingZonesController", ParkingZonesController);
+    angular.module(AppName).controller("parkingZonesController", ParkingZonesController);
 
-    ParkingZonesController.$inject = ["$log", "parkingZonesService"];
+    ParkingZonesController.$inject = ["$log"];
 
 
-    function ParkingZonesController($log, parkingZonesService) {
+    function ParkingZonesController($log) {
         var vm = this;
 
         vm.$onInit = _onInit;
@@ -14,19 +14,19 @@
         function _onInit() {
 
             for (var i = 0; i < features.length; i++) {
-                var status = features[i].SENSOR_STATUS
+                var status = features[i].properties.SENSOR_STATUS
                 if (status == 0) {
-                    $log.log(features[i].ADDRESS_SPACE + "" + "available")
+                    $log.log(features[i].properties.ADDRESS_SPACE + " " + "available")
                 } else {
-                    $log.log(features[i].ADDRESS_SPACE + "" + "unavailable")
+                    $log.log(features[i].properties.ADDRESS_SPACE + "   " + "unavailable")
                 }
             }
-                
+
 
         };
-        
-           
-        
+
+
+
 
         features = [
             {
@@ -34,93 +34,94 @@
                 "properties": {
                     "OBJECTID": 1001,
                     "SENSOR_UNIQUE_ID": "WV91",
-                    "GPSX": -118.445892,
-                    "GPSY": 34.060678,
+                    "GPSX": -118.269265,
+                    "GPSY": 34.038715,
                     "MTYPE": "IPS",
                     "SENSOR_STATUS": 3,
                     "PMZ": "WV",
                     "PMZ2": "WV9",
-                    "ADDRESS_SPACE": "10901 W KINROSS AVE",
-                    "TOOLTIP": "Address Space: 10901 W KINROSS AVE\\nType: IPS’\\nAs of: 06/17/2015\\nID: WV91\\nStatus: 3",
+                    "ADDRESS_SPACE": "South Figuero St",
+                    "TOOLTIP": "Address Space: South Figuero St AVE\\nType: IPS’\\nAs of: 06/17/2015\\nID: WV91\\nStatus: 3",
                     "NLA_URL": "navigatela/reports/dot_parking_meter_sensors.cfm?pk=1001"
                 },
                 "geometry": {
                     "type": "Point",
                     "coordinates": [
-                        -118.44590432052128,
-                        34.060682446842506
+                        -118.269265,
+                        34.038715
                     ]
                 }
             },
             {
                 "type": "Feature",
                 "properties": {
-                    "OBJECTID": 1002,
-                    "SENSOR_UNIQUE_ID": "WV92",
-                    "GPSX": -118.445967,
-                    "GPSY": 34.060634,
+                    "OBJECTID": 8926,
+                    "SENSOR_UNIQUE_ID": "WB830",
+                    "GPSX": -118.270644,
+                    "GPSY": 34.037742,
                     "MTYPE": "IPS",
                     "SENSOR_STATUS": 3,
-                    "PMZ": "WV",
-                    "PMZ2": "WV9",
-                    "ADDRESS_SPACE": "10901 W KINROSS AVE",
-                    "TOOLTIP": "Address Space: 10901 W KINROSS AVE\\nType: IPS’\\nAs of: 06/17/2015\\nID: WV92\\nStatus: 3",
-                    "NLA_URL": "navigatela/reports/dot_parking_meter_sensors.cfm?pk=1002"
+                    "PMZ": "WB",
+                    "PMZ2": "WB8",
+                    "ADDRESS_SPACE": "Venice Blvd",
+                    "TOOLTIP": "Address Space: Venice Blvd\\nType: IPS’\\nAs of: 06/17/2015\\nID: WB830\\nStatus: 3",
+                    "NLA_URL": "navigatela/reports/dot_parking_meter_sensors.cfm?pk=8926"
                 },
                 "geometry": {
                     "type": "Point",
                     "coordinates": [
-                        -118.44597920078711,
-                        34.060638892995286
+                        -118.270644,
+                        34.037742
                     ]
                 }
             },
             {
                 "type": "Feature",
                 "properties": {
-                    "OBJECTID": 1003,
-                    "SENSOR_UNIQUE_ID": "WV93",
-                    "GPSX": -118.446016,
-                    "GPSY": 34.060604,
+                    "OBJECTID": 8914,
+                    "SENSOR_UNIQUE_ID": "WB812",
+                    "GPSX": -118.244075,
+                    "GPSY": 34.041546,
                     "MTYPE": "IPS",
                     "SENSOR_STATUS": 0,
-                    "PMZ": "WV",
-                    "PMZ2": "WV9",
-                    "ADDRESS_SPACE": "10901 W KINROSS AVE",
-                    "TOOLTIP": "Address Space: 10901 W KINROSS AVE\\nType: IPS’\\nAs of: 06/17/2015\\nID: WV93\\nStatus: 3",
-                    "NLA_URL": "navigatela/reports/dot_parking_meter_sensors.cfm?pk=1003"
+                    "PMZ": "WB",
+                    "PMZ2": "WB8",
+                    "ADDRESS_SPACE": "West Pico Blvd",
+                    "TOOLTIP": "Address Space: West Pico Blvd\\nType: IPS’\\nAs of: 06/17/2015\\nID: WB812\\nStatus: 3",
+                    "NLA_URL": "navigatela/reports/dot_parking_meter_sensors.cfm?pk=8914"
                 },
                 "geometry": {
                     "type": "Point",
                     "coordinates": [
-                        -118.44602815153763,
-                        34.060608655898044
+                        -118.244075,
+                        34.052251
                     ]
                 }
             },
             {
                 "type": "Feature",
                 "properties": {
-                    "OBJECTID": 1004,
-                    "SENSOR_UNIQUE_ID": "WV94",
-                    "GPSX": -118.446271,
-                    "GPSY": 34.060451,
+                    "OBJECTID": 8901,
+                    "SENSOR_UNIQUE_ID": "WV683C",
+                    "GPSX": -118.271937,
+                    "GPSY": 34.046317,
                     "MTYPE": "IPS",
                     "SENSOR_STATUS": 0,
                     "PMZ": "WV",
-                    "PMZ2": "WV9",
-                    "ADDRESS_SPACE": "10901 W KINROSS AVE",
-                    "TOOLTIP": "Address Space: 10901 W KINROSS AVE\\nType: IPS’\\nAs of: 06/17/2015\\nID: WV94\\nStatus: 3",
-                    "NLA_URL": "navigatela/reports/dot_parking_meter_sensors.cfm?pk=1004"
+                    "PMZ2": "WV6",
+                    "ADDRESS_SPACE": "West 11th Street",
+                    "TOOLTIP": "Address Space: West 11th Street\\nType: IPS’\\nAs of: 06/17/2015\\nID: WV683C\\nStatus: 3",
+                    "NLA_URL": "navigatela/reports/dot_parking_meter_sensors.cfm?pk=8901"
                 },
                 "geometry": {
                     "type": "Point",
                     "coordinates": [
-                        -118.44628300998411,
-                        34.06045623643544
+                        -118.271937,
+                        34.046317
                     ]
                 }
             }
+                 
         ]
 
         //function _onInit() {
