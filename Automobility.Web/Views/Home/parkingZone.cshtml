@@ -1,0 +1,279 @@
+﻿
+@{
+    ViewBag.Title = "parkingZone";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h2>parkingZone</h2>
+    <div ng-app="HondaHack">
+
+        @*<div id="map" style="height:600px;width:600px;">*@
+        <div>
+            <div class="map" style="width:40%;height:50%;">
+                <map-component></map-component>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        //features = [
+        //    {
+        //        "type": "Feature",
+        //        "properties": {
+        //            "OBJECTID": 1001,
+        //            "SENSOR_UNIQUE_ID": "WV91",
+        //            "GPSX": -118.269265,
+        //            "GPSY": 34.038715,
+        //            "MTYPE": "IPS",
+        //            "SENSOR_STATUS": 3,
+        //            "PMZ": "WV",
+        //            "PMZ2": "WV9",
+        //            "ADDRESS_SPACE": "South Figuero St",
+        //            "TOOLTIP": "Address Space: South Figuero St AVE\\nType: IPS’\\nAs of: 06/17/2015\\nID: WV91\\nStatus: 3",
+        //            "NLA_URL": "navigatela/reports/dot_parking_meter_sensors.cfm?pk=1001"
+        //        },
+        //        "geometry": {
+        //            "type": "Point",
+        //            "coordinates": [
+        //                -118.269265,
+        //                34.038715
+        //            ]
+        //        }
+        //    },
+        //    {
+        //        "type": "Feature",
+        //        "properties": {
+        //            "OBJECTID": 8926,
+        //            "SENSOR_UNIQUE_ID": "WB830",
+        //            "GPSX": -118.270644,
+        //            "GPSY": 34.037742,
+        //            "MTYPE": "IPS",
+        //            "SENSOR_STATUS": 3,
+        //            "PMZ": "WB",
+        //            "PMZ2": "WB8",
+        //            "ADDRESS_SPACE": "Venice Blvd",
+        //            "TOOLTIP": "Address Space: Venice Blvd\\nType: IPS’\\nAs of: 06/17/2015\\nID: WB830\\nStatus: 3",
+        //            "NLA_URL": "navigatela/reports/dot_parking_meter_sensors.cfm?pk=8926"
+        //        },
+        //        "geometry": {
+        //            "type": "Point",
+        //            "coordinates": [
+        //                -118.270644,
+        //                34.037742
+        //            ]
+        //        }
+        //    },
+        //    {
+        //        "type": "Feature",
+        //        "properties": {
+        //            "OBJECTID": 8914,
+        //            "SENSOR_UNIQUE_ID": "WB812",
+        //            "GPSX": -118.244075,
+        //            "GPSY": 34.041546,
+        //            "MTYPE": "IPS",
+        //            "SENSOR_STATUS": 0,
+        //            "PMZ": "WB",
+        //            "PMZ2": "WB8",
+        //            "ADDRESS_SPACE": "West Pico Blvd",
+        //            "TOOLTIP": "Address Space: West Pico Blvd\\nType: IPS’\\nAs of: 06/17/2015\\nID: WB812\\nStatus: 3",
+        //            "NLA_URL": "navigatela/reports/dot_parking_meter_sensors.cfm?pk=8914"
+        //        },
+        //        "geometry": {
+        //            "type": "Point",
+        //            "coordinates": [
+        //                -118.244075,
+        //                34.052251
+        //            ]
+        //        }
+        //    },
+        //    {
+        //        "type": "Feature",
+        //        "properties": {
+        //            "OBJECTID": 8901,
+        //            "SENSOR_UNIQUE_ID": "WV683C",
+        //            "GPSX": -118.271937,
+        //            "GPSY": 34.046317,
+        //            "MTYPE": "IPS",
+        //            "SENSOR_STATUS": 0,
+        //            "PMZ": "WV",
+        //            "PMZ2": "WV6",
+        //            "ADDRESS_SPACE": "West 11th Street",
+        //            "TOOLTIP": "Address Space: West 11th Street\\nType: IPS’\\nAs of: 06/17/2015\\nID: WV683C\\nStatus: 3",
+        //            "NLA_URL": "navigatela/reports/dot_parking_meter_sensors.cfm?pk=8901"
+        //        },
+        //        "geometry": {
+        //            "type": "Point",
+        //            "coordinates": [
+        //                -118.271937,
+        //                34.046317
+        //            ]
+        //        }
+        //    }
+
+        //]
+
+        //var map, infoWindow;
+        //function initMap() {
+        //    map = new google.maps.Map(document.getElementById('map'), {
+        //        center: { lat: 34.040052, lng: -118.269024 },
+        //        zoom: 6
+        //    });
+        //    infoWindow = new google.maps.InfoWindow;
+
+        //    // Try HTML5 geolocation.
+        //    //if (navigator.geolocation) {
+        //    //    navigator.geolocation.getCurrentPosition(function (position) {
+        //    //        var pos = {
+        //    //            lat: position.coords.latitude,
+        //    //            lng: position.coords.longitude
+        //    //        };
+
+        //    //        infoWindow.setPosition(pos);
+        //    //        infoWindow.setContent('Location found.');
+        //    //        infoWindow.open(map);
+        //    //        map.setCenter(pos);
+        //    //    }, function () {
+        //    //        handleLocationError(true, infoWindow, map.getCenter());
+        //    //    });
+        //    //} else {
+        //    //    // Browser doesn't support Geolocation
+        //    //    handleLocationError(false, infoWindow, map.getCenter());
+        //    //}
+
+        //    var mapOptions = {
+        //        zoom: 4,
+        //        center: { lat:34.040052, lng:-118.269024 }
+        //    }
+        //    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        //    var marker = new google.maps.Marker({
+        //        position: { lat: 34.040052, lng: -118.269024 },
+        //        map: map,
+        //        title: 'Hello World!'
+        //    });
+        //    marker.setMap(map);
+
+        //    var map2 = new google.maps.Map(document.getElementById("map"), mapOptions);
+        //    var marker2 = new google.maps.Marker({
+        //        position: { lat: 34.038715, lng: -118.269265 },
+        //        map: map,
+        //        title: 'Hello World1!'
+        //    });
+        //    marker2.setMap(map2);
+
+        //    var map3 = new google.maps.Map(document.getElementById("map"), mapOptions);
+        //    var marker3 = new google.maps.Marker({
+        //        position: { lat: 34.037742, lng: -118.270644 },
+        //        map: map,
+        //        title: 'Hello World1!'
+        //    });
+        //    marker3.setMap(map3);
+
+
+        //}
+
+        //function handlelocationerror(browserhasgeolocation, infowindow, pos) {
+        //    infowindow.setposition(pos);
+        //    infowindow.setcontent(browserhasgeolocation ?
+        //        'error: the geolocation service failed.' :
+        //        'error: your browser doesn\'t support geolocation.');
+        //    infowindow.open(map);
+        //}
+
+
+        //function setoriginmarker(position) {
+        //    var origincoords = { lat: position.lat, lng: position.lng };
+
+        //    vm.map = new google.maps.map(document.getelementbyid('map'),
+        //        { center: { lat: 121.1224, lng: 424.42442 }, zoom: 12 });
+
+        //    new google.maps.marker({ position: origincoords, map: vm.map, animation: google.maps.animation.bounce })
+        //};
+
+        //function setmarker(currentposition, targetmap, mapbounds) {
+        //    var coords = { lat: currentposition.address.lat, lng: currentposition.address.lng };
+        //    var marker = new google.maps.marker({
+        //        position: coords, map: targetmap, icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+        //    });
+        //    marker.data = currentposition;
+        //    setinfowindow(marker, targetmap);
+        //    google.maps.event.addlistener(marker, 'click', _onmarkerclicked);
+        //    return marker;
+        //};
+
+        //function setinfowindow(marker, targetmap) {
+        //    var infowindow = new google.maps.infowindow({});
+        //    marker.infowindow = infowindow;
+        //    var content =
+        //        '<div>' +
+        //        '<div>' + marker.data.title + '</div>' +
+        //        '<div>' +
+        //        '<div>' + marker.data.firstname + " " + marker.data.lastname + '</div>' +
+        //        '<p>' + marker.data.description + '</p>' +
+        //        '<div>contact info</div>' +
+        //        '<p>address: ' + marker.data.address.city + ", " + marker.data.zip + '<br>' +
+        //        "<p><button data-meal-id='" + marker.data.mealid + "'data-meal-lat='" + marker.data.address.lat + "'data-meal-lng = '" + marker.data.address.lng + "'id='directionbtn' class='directionbtns btn btn-xs btn-primary'>directions</button></p>" +
+        //        '</div>' +
+        //        "<span> click <a href='https://maps.google.com?saddr=" + vm.addressdata.lat + "," + vm.addressdata.lng + "&daddr=" + marker.data.address.lat + "," + marker.data.address.lng + "'> here </a> for navigation</span>"
+        //    '</div >';
+        //    marker.infowindow.setcontent(content);
+
+        //};
+
+    </script>
+
+    @*<script type="text/javascript">
+        function initMap() {
+            var chicago = { lat: 41.85, lng: -87.65 };
+            var indianapolis = { lat: 39.79, lng: -86.14 };
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: chicago,
+                zoom: 7
+            });
+
+            var directionsDisplay = new google.maps.DirectionsRenderer({
+                map: map
+            });
+
+            // Set destination, origin and travel mode.
+            var request = {
+                destination: indianapolis,
+                origin: chicago,
+                travelMode: 'DRIVING'
+            };
+
+            // Pass the directions request to the directions service.
+            var directionsService = new google.maps.DirectionsService();
+            directionsService.route(request, function (response, status) {
+                if (status == 'OK') {
+                    // Display the route on the map.
+                    directionsDisplay.setDirections(response);
+                }
+            });a
+        }*@
+    <script src="../Scripts/jquery-3.1.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsDgfiB7P_cbO21WyCJEIlt4qQyphJQ1A"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="~/Scripts/Site/app.js"></script>
+    <script src="~/Scripts/Controller/mapController.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script>
+    @*<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVcsD-OnS6IWkRn0ZxsEANwxeu8GJvmMI&callback=initMap"
+        async defer></script>*@
+
+
+</body>
+
+
+
+
+
+</html>

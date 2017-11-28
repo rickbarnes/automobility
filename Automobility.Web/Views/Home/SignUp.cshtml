@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "SignUp";
+}
+<div ng-app="HondaHack" ng-controller="homeController as hc">
+    <div class="st-container st-container--right-side">
+      
+
+        <div class="st-pusher">
+            <div class="navbar navbar-dark bg-transparent mt-lg-3" style="position:fixed;z-index:9999999;width: 100%;">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="images/logo-light.png" class="mr-2 img-fluid" />
+                        WING
+                    </a>
+
+                    <div class="sidebar-toggle">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                </div>
+            </div>
+
+           
+
+            <div class="features-tabs-section">
+                <div class="container">
+                    @*<div class="header">
+                            <img src="images/ss2.png" class="img-fluid" alt="screenshot" />
+                            <h3>WING is the official partner of the 2024 LA Olympics</h3>
+                            <p>WING can help you move between Olympic events as well as tour beautiful Los Angeles.</p>
+                        </div>*@
+                    @*<div class="screenshot animated fadeInUp">
+                            <img src="images/ss3.png" class="img-fluid" alt="screenshot" />
+                            <h3>WING is the official partner of the 2024 LA Olympics</h3>
+                            <p>WING can help you move between Olympic events as well as tour beautiful Los Angeles.</p>
+                        </div>*@
+                    <div class="tabs-wrapper">
+                        @*<ul class="nav nav-tabs justify-content-center" id="feature-tabs">
+                                <li>
+                                    <a href="#home" class="active" data-toggle="tab">Upstart your development</a>
+                                </li>
+                                <li>
+                                    <a href="#profile" data-toggle="tab">Get ready in half the time</a>
+                                </li>
+                                <li>
+                                    <a href="#messages" data-toggle="tab">Collaborate with everyone</a>
+                                </li>
+                                <li>
+                                    <a href="#settings" data-toggle="tab">Get more done faster</a>
+                                </li>
+                            </ul>*@
+                        <div class="tab-content">
+                            <div class="tab-pane fade" id="settings">
+                                <div class="row">
+                                    <div class="col-lg-6 image">
+                                        <img src="images/ss3.png" class="img-fluid" alt="pic4" />
+                                    </div>
+                                    <div class="col-lg-6 info" style="margin-top:15%;">
+                                        @*<h4 style="margin-top:15%;">Login to plan your trip</h4>*@
+                                        @*<p>
+                                            30-day money-back guarantee that starts after your first payment.   </p>*@
+                                        <div class="wrapper">
+                                            <div class="form">
+                                                <form role="form">
+                                                    @*<div class="form-group">
+                                                        <p for="name">Your name</p>
+                                                        <input type="text" style="margin-left:10%;" class="form-control" id="name"  />
+                                                    </div>*@
+                                                    <div class="form-group">
+                                                        <p for="email">Email address</p>
+                                                        <input type="email" style="margin-left:10%;"  class="form-control" id="email" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <p for="password">Password</p>
+                                                        <input type="password" style="margin-left:10%;"  class="form-control" id="password" />
+                                                    </div>
+                                                    @*<div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"> You have read & agree to the
+                                                            <a href="#">Terms of service</a>.
+                                                        </label>
+                                                    </div>*@
+                                                    <div class="text-center mt-5">
+                                                        <input type="submit" class="submit btn-block btn-shadow btn-shadow-info" ng-click="hc.login()"value="Login">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+  
+    </div>
+</div>
+@*<script src="~/Scripts/angular.min.js"></script>
+<script src="~/Scripts/Site/app.js"></script>
+<script src="~/Scripts/Controller/home.controller.js"></script>*@
+
+
+
