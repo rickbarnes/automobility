@@ -11,6 +11,7 @@
         vm.$scope = $scope;
         vm.$location = $location;
         vm.$onInit = _onInit;
+        vm.search = "";
 
         function _onInit() {
             console.log("Home controller initiated");

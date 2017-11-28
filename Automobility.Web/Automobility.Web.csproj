@@ -224,6 +224,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JsBuilderController.cs" />
     <Compile Include="Controllers\AutomobilityController.cs" />
+    <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Extensions\DictionaryExt.cs" />
     <Compile Include="Extensions\EnumExt.cs" />
     <Compile Include="Extensions\HtmlHelperExt.cs" />
@@ -891,6 +892,7 @@
     <None Include="packages.config" />
     <None Include="Project_Readme.html" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Views\Member\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
