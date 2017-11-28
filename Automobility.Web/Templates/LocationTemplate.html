@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <title></title>
+</head>
+<body>
+    <div class="widget-body" ng-app="HondaHack" ng-controller="itinController as ic">
+        <div class="panel-body">
+            <div class="row" style="margin-top:2%;">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" id="find" value="" placeholder="Find Location">
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" id="find" value="" placeholder="Near">
+                </div>
+                <div class="col-md-2">
+                    <button type="button">Search</button>
+                  
+                </div>
+                
+                <div class="col-md-12" style="margin-top:.5%;">
+                    <button type="button" ng-click="ic.showRest()">Restaurants</button><button type="button" ng-click="ic.showLandMark()">Landmarks</button>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="panel-body" ng-repeat="model in ic.model">
+            <form name="List">
+                <div class="form-group list-group-item">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <!--<img class="commentImg" ng-src="/Images/CocaCola.jpg" style="height: 3em; width: 2.75em; margin: 0 auto; display: block; margin-top:35%;">-->
+                            <img src="{{model.Image}}" style="height:100%; width:100%;" />
+                        </div>
+
+                        <div class="col-md-5">
+                            <div>{{model.Name}}</div>
+                            <div>{{model.Price}}</div>
+                            <p>{{model.Distance}}</p>
+                        </div>
+                        <div class="col-md-5">
+                            <div>{{model.Address}}</div>
+                            <div>{{model.City}}</div>
+                            <p>{{model.PhoneNumber}}</p>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--<div ng-show="cc.pagesAvailable">
+            <p id="reportedPages">Page {{cc.searchModel.pageNumber}}</p>
+            <div class="modal-footer" ng-hide="cc.flaggedContent.adminAction === 'No Action'">
+
+                <div style="padding-right: 100px;">
+                    <button class="btn btn-gray btn-rounded thisButton" style="cursor:default;" ng-click="cc.dynamicButton(1) " ng-disabled="cc.pagSettings.pageNumber == 1">«</button>
+                    <button class="btn btn-gray btn-rounded thisButton" style="cursor:default;" ng-click="cc.decrementPagNum()" ng-disabled="cc.pagSettings.pageNumber == 1">prev</button>
+
+                    <button class="btn btn-gray btn-rounded target" style="cursor:default;" ng-click="cc.dynamicButton(cc.pagSettings.firstButton)" ng-disabled="cc.pagSettings.firstButton == cc.pagSettings.pageNumber">{{cc.pagSettings.firstButton}}</button>
+                    <button class="btn btn-gray btn-rounded target" style="cursor:default;" ng-click="cc.dynamicButton(cc.pagSettings.secondButton)" ng-disabled="cc.pagSettings.secondButton == cc.pagSettings.pageNumber || cc.pagSettings.secondButton > cc.pagSettings.totalPages">{{cc.pagSettings.secondButton}}</button>
+                    <button class="btn btn-gray btn-rounded target" style="cursor:default;" ng-click="cc.dynamicButton(cc.pagSettings.thirdButton)" ng-disabled="cc.pagSettings.thirdButton == cc.pagSettings.pageNumber || cc.pagSettings.thirdButton > cc.pagSettings.totalPages">{{cc.pagSettings.thirdButton}}</button>
+
+                    <button class="btn btn-gray btn-rounded" style="cursor:default;" ng-click="cc.incrementPagNum()" ng-disabled="cc.pagSettings.pageNumber == cc.pagSettings.totalPages">next</button>
+                    <button class="btn btn-gray btn-rounded" style="cursor:default;" ng-click="cc.dynamicButton(cc.pagSettings.totalPages)" ng-disabled="cc.pagSettings.pageNumber == cc.pagSettings.totalPages">»</button>
+                </div>
+
+            </div>
+        </div>-->
+    </div>
+
+    <script src="../Scripts/jquery-3.1.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/Site/app.js"></script>
+    <script src="../Scripts/Controller/ItineraryController.js"></script>
+
+
+</body>
+</html>
