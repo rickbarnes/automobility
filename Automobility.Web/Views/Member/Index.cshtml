@@ -5,6 +5,40 @@
 <br />
 
 <div ng-controller="homeController as homeCtrl" ng-cloak>
+    <div id="confirmDetails">
+        <img class="bgImg" src="/images/localhost_3024_InTransit(iPhone 6) (1).png" />
+        <img class="bgImg2" src="~/images/localhost_3024_InTransit(iPhone 6) (2).png" />
+        <div class="navTop">
+                <h2 id="allSet" class="text-center">All set?</h2>
+                <h2 id="onRoute" class="text-center">On Route</h2>
+        </div>
+        <div class="navMiddle">
+            <div class="container">
+                <div id="walkDetails">
+                    <p></p>
+                    <p><strong>Vehicle Location: </strong>Gilbert Lindsay Plaza - Parking Meter #28 </p>
+                    <p><strong>Walking Distance: </strong>0.2 miles</p>
+                    <p><strong>Walking Time: </strong>~2 minutes</p>
+                </div>
+                <div id="rideDetails">
+                    <p></p>
+                    <p><strong>Destination: </strong>Hollywood Walk of Fame</p>
+                    <p><strong>Remaining Distance: </strong>5.3 Miles</p>
+                    <p><strong>ETA: </strong>10:14AM</p>
+                </div>
+            </div>
+        </div>
+        <div class="navBottom text-center">
+            <div id="confirmButtons">
+                <md-button class="md-button md-raised" ng-click="homeCtrl.confirm()">Confirm Ride</md-button>
+                <md-button class="md-button md-raised">Cancel</md-button>
+            </div>
+            <div id="eta">
+                <md-button class="md-warn md-raised">STOP</md-button>
+                
+            </div>
+        </div>
+    </div>
     <div id="sidebarMenu">
         <!-- start navbar -->
         <md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
@@ -29,21 +63,13 @@
         <!-- end navbar -->
         <div class="container">
             <div class="row">
-                <div class="col-xs-12">
-                    <span><md-icon ng-click="homeCtrl.toggleLeft()" md-font-icon="fa-bars" class="blackText fa fa-2x fa-md md-icon-button"></md-icon></span>
+                <div class="col-xs-12 text-center">
+                    <span class=""><md-icon ng-click="homeCtrl.toggleLeft()" md-font-icon="fa-bars" class="blackText fa fa-2x fa-md md-icon-button pull-left"></md-icon><strong id="wing" style="margin-left:-30px">WING</strong></span>
                 </div>
             </div>
         </div>
     </div>
-    <div id="confirmDetails" class="container confirmHeight">
-        @*<div id="map" style="height:100%; width:375px">
-            <div>
-                <div class="map">
-                    <map-component></map-component>
-                </div>
-            </div>
-        </div>*@
-    </div>
+    
     <!-- start search and planning -->
     <div id="searchAndPlan">
         <div class="container">
@@ -61,10 +87,6 @@
                                 No matching results.
                             </md-not-found>
                         </md-autocomplete>
-                        @*<md-input-container class="maxWidth text-center" layout-align="center center">
-                            <label>Where would you like to go?</label>
-                            <input type="text" ng-model="homeCtrl.search" class="md-input" />
-                        </md-input-container>*@
                     </form>
                 </div>
             </div>

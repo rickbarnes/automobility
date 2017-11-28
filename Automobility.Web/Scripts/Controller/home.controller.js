@@ -289,10 +289,20 @@
         vm.time = null;
         vm.ampm = null;
         vm.confirmRide = _confirmRide;
+        vm.confirm = _confirm;
 
         function _confirmRide() {
-            $('#searchAndPlan').slideUp();
-            $('#confirmDetails').slideDown();
+            $('#searchAndPlan').slideUp('slow');
+            $('#wing').fadeOut('fast');
+            $('#confirmDetails').fadeIn('slow');
+        }
+
+        function _confirm() {
+            $('#confirmButtons, #walkDetails, #allSet').slideUp();
+            $('#eta, #rideDetails, #onRoute').slideDown();
+            $('.bgImg').fadeOut('slow');
+            $('.bgImg2').fadeIn('slow');
+
         }
 
         function _addEvent() {

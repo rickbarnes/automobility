@@ -1175,6 +1175,8 @@
     <Content Include="images\index-device.png" />
     <Content Include="images\index-hero.jpg" />
     <Content Include="images\index-hero.png" />
+    <Content Include="images\localhost_3024_InTransit%28iPhone 6%29 %281%29.png" />
+    <Content Include="images\localhost_3024_InTransit%28iPhone 6%29 %282%29.png" />
     <Content Include="images\logo-dark.png" />
     <Content Include="images\logo-light.png" />
     <Content Include="images\logos\apple.png" />

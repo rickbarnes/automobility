@@ -36,69 +36,6 @@
     <script src="~/bower_components/angular-messages/angular-messages.js"></script>
     <script src="~/bower_components/angular-material/angular-material.js"></script>
     <script src="~/bower_components/toastr/toastr.min.js"></script>
-    @*<script type="text/javascript">
-            function initMap() {
-                var current = { lat: 34.04196, lng: -118.26960 }; //Lat : 34.04096 | Long : -118.26860
-                var parking = { lat: 34.04096, lng: -118.26860 }; // 34.1017° N, 118.3337° W
-
-                var map = new google.maps.Map(document.getElementById('map'), {
-                    center: current,
-                    zoom: 7
-                });
-
-                var directionsDisplay = new google.maps.DirectionsRenderer({
-                    map: map
-                });
-
-                // Set destination, origin and travel mode.
-                var request = {
-                    destination: parking,
-                    origin: current,
-                    travelMode: 'WALKING'
-                };
-
-                // Pass the directions request to the directions service.
-                var directionsService = new google.maps.DirectionsService();
-                directionsService.route(request, function (response, status) {
-                    if (status == 'OK') {
-                        // Display the route on the map.
-                        directionsDisplay.setDirections(response);
-                    }
-                }); 
-            }
-    </script>*@
-    @*<script type="text/javascript">
-            function initMap() {
-                var current = { lat: 34.04096, lng: -118.26860 }; //Lat : 34.04096 | Long : -118.26860
-                var walkOfFame = { lat: 34.1017, lng: -118.3337 }; // 34.1017° N, 118.3337° W
-
-                var map = new google.maps.Map(document.getElementById('map'), {
-                    center: current,
-                    zoom: 7
-                });
-
-                var directionsDisplay = new google.maps.DirectionsRenderer({
-                    map: map
-                });
-
-                // Set destination, origin and travel mode.
-                var request = {
-                    destination: walkOfFame,
-                    origin: current,
-                    travelMode: 'DRIVING'
-                };
-
-                // Pass the directions request to the directions service.
-                var directionsService = new google.maps.DirectionsService();
-                directionsService.route(request, function (response, status) {
-                    if (status == 'OK') {
-                        // Display the route on the map.
-                        directionsDisplay.setDirections(response);
-                    }
-                });
-            }
-        </script>*@
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVcsD-OnS6IWkRn0ZxsEANwxeu8GJvmMI&callback=initMap"></script>
 
     @RenderSection("scripts", required: false)
 </body>
