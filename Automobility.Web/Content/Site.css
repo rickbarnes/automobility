@@ -59,4 +59,27 @@ md-input-container {
     background: #01ACEE;
 }
 
+.md-primary {
+    width: 100%;
+}
+
+.profileIcon {
+    padding-right: 10px;
+}
+
+.bp {
+    padding-bottom: 3px;
+}
+
+.div-56 {
+    height: 10px;
+    background: linear-gradient(to bottom, #3F51B5, #ffffff);
+}
+
+md-grid-tile-footer h3 {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
 /*green - #10a453 yellow - ebf937 red - ed4429 blue - 01acee black - 090909*/
