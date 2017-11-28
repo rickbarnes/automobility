@@ -1498,6 +1498,7 @@
     <Content Include="Views\Shared\_MemberLayout.cshtml" />
     <Content Include="Views\Home\parkingZone.cshtml" />
     <Content Include="Views\Home\AddSpot.cshtml" />
+    <Content Include="Views\Member\InTransit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

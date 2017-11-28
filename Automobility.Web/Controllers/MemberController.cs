@@ -13,5 +13,11 @@ namespace Automobility.Web.Controllers
         {
             return View();
         }
+
+        [Route("~/InTransit")]
+        public ActionResult InTransit()
+        {
+            return View();
+        }
     }
 }
