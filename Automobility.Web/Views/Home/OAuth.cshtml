@@ -5,105 +5,526 @@
 
 <h2>OAuth</h2>
 <div ng-controller="oAuthController as oac" ng-cloak>
-    <a href="https://mock.smartcar.com/oauth/authorize?response_type=code&client_id=d0d419a5-ca7d-4e34-9fd4-cccf4bddd33f&scope=read_odometer read_vehicle_info&redirect_uri=http://localhost:3024/oauth/smartcar">TEST</a>
-    {{oac.string}}
+    @*<a href="https://mock.smartcar.com/oauth/authorize?response_type=code&client_id=d0d419a5-ca7d-4e34-9fd4-cccf4bddd33f&scope=read_odometer read_rear_trunk read_tires read_interior_thermistor control_security control_security:unlock control_security:lock read_security control_panic control_panic:start control_panic:stop control_headlights control_headlights:flash control_headlights:on control_headlights:off control_ignition control_ignition:start control_ignition:on control_ignition:accessory control_ignition:off read_fuel read_engine_hood read_doors read_location read_hazard read_vehicle_info&redirect_uri=http://localhost:3024/oauth/smartcar">Get Code</a>
+    <br />*@
+    @*{{oac.string}}*@
+    <br/>
+    @*<input type="button" value="Get Token" ng-click="oac.getToken()" />*@
+    <br/>
+    @*{{oac.accessToken}}*@
+    <br/>
+    @*<input type="button" value="Get API Vehicle ID" ng-click="oac.getAPI()" />*@
+    <br/>
+    @*{{oac.APIVehicles}}*@
+    <br/>
     
-    <input type="button" value="Get Token" ng-click="oac.getToken()" />
+    <md-input-container>
+        <md-select ng-model="oac.vehicleModel" placeholder="Select a vehicle" ng-change="oac.getVehicleInfo()">
+            <md-option ng-value="vehicle" ng-repeat="vehicle in oac.vehicleArray">{{ vehicle }}</md-option>
+        </md-select>
+    </md-input-container>
+
+    @*<input type="button" value="Get Vehicle Info" ng-click="oac.getVehicleInfo()" />*@
+    <br/>
+    {{oac.vehicleInfo}}
+    <br/>
+    
+    @*<md-input-container>
+        <md-select ng-model="oac.vehicleAction" placeholder="Select an action">
+            <md-option ng-value="action" ng-repeat="action in oac.vehicleActionsArray">{{ action }}</md-option>
+        </md-select>
+    </md-input-container>*@
+
+    @*<input type="button" value="Get Vehicle Permissions" ng-click="oac.getVehiclePermissions()" />*@
+    <br/>
+    @*{{oac.vehiclePermissionInfo}}*@
+    <br/>
+    @*<input type="button" value="Get Vehicle Location" ng-click="oac.getVehicleLocation()" />*@
+    <br/>
+    <br/>
+    <br/>
+    <span ng-if="oac.headlights">Headlights are now flashing.</span>
+    <br/>
+    <span ng-if="oac.panic">Panic mode now turned on.</span>
+    <br />
+    <span ng-if="oac.locks">Doors are now unlocked.</span>
+    <br />
+    {{oac.vehicleLocationInfo}}
+    <br />
+    <span ng-if="oac.location">Location has been sent to the first responders.</span>
+    <br/>
+    <br/>
+    <br/>
+    
+    
+    <input type="button" value="Panic Button" ng-click="oac.panicButton()"/>
+    
+
+    @*<a href="tel:555-123-4567"></a>*@
+    
+    
 </div>
 
 @section scripts{
-<script src="~/Scripts/Site/app.js"></script>
-<script src="~/Scripts/mainService.js"></script>
-<script type="text/javascript">
-    (function () {
-        'use strict';
-        
-        angular
-            .module(AppName)
-            .controller("oAuthController", OAuthController);
+    <script src="~/Scripts/Site/app.js"></script>
+    <script src="~/Scripts/mainService.js"></script>
+    <script type="text/javascript">
+        (function() {
+            'use strict';
 
-        OAuthController
-            .$inject = ["$scope", "mainService"];
+            angular
+                .module(AppName)
+                .controller("oAuthController", OAuthController);
 
-        function OAuthController($scope, mainService) {
-            var vm = this;
-            vm.postModel = {};
-            vm.string = '';
+            OAuthController
+                .$inject = ["$scope", "mainService"];
 
-            vm.getToken = _getToken;
-            vm.postEntity = _postEntity;
-            vm.postEntitySuccess = _postEntitySuccess;
-            vm.postEntityError = _postEntityError;
+            function OAuthController($scope, mainService) {
+                var vm = this;
+                vm.postModel = {};
+                vm.string = '';
+                vm.accessToken = '';
+                vm.APIVehicles = '';
+                vm.vehicleInfo = '';
+                vm.vehiclePermissionInfo = '';
+                vm.vehicleLocationInfo = '';
+                vm.vehicleAction = '';
 
-            vm.$onInit = _init;
+                vm.vehicleArray = [];
+                vm.vehicleActionsArray = [];
 
-            function _init() {
+                vm.vehicleModel = {};
 
-            };
-
-            vm.string = window.location.search;
-            vm.string = vm.string.split("code=")[1];
-            if (vm.string)
-                console.log(vm.string);
-
+                vm.headlightsModel = {};
+                vm.panicModeModel = {};
+                vm.unlockDoorsModel = {};
 
 
-            vm.postModel = {
-                "Authorization": "Basic base64(d0d419a5-ca7d-4e34-9fd4-cccf4bddd33f:2ee05bc8-f40c-4868-984d-6cf76facf3d2)",
-                "Content-Type": "application/x-www-form-urlencoded"
-            }
+                vm.getToken = _getToken;
+                vm.getAPI = _getAPI;
+                vm.getVehicleInfo = _getVehicleInfo;
+                vm.getVehiclePermissions = _getVehiclePermissions;
+                vm.getVehicleLocation = _getVehicleLocation;
+                vm.panicButton = _panicButton;
 
-            function _getToken() {
-                //mainService.post("https://auth.smartcar.com/oauth/token", vm.postModel);
+                vm.getAccessToken = _getAccessToken;
+                vm.getAccessTokenSuccess = _getAccessTokenSuccess;
+                vm.getAccessTokenError = _getAccessTokenError;
 
-                vm.postEntity(vm.postModel, vm.postEntitySuccess, vm.postEntityError);
+                vm.getSmartcarAPI = _getSmartcarAPI;
+                vm.getSmartcarSuccess = _getSmartcarSuccess;
+                vm.getSmartcarError = _getSmartcarError;
 
-            }
+                vm.getVehicle = _getVehicle;
+                vm.getVehicleSuccess = _getVehicleSuccess;
+                vm.getVehicleError = _getVehicleError;
 
-            // post method
-            function _postEntity(entityData, onSuccess, onError) {
+                vm.getVehiclePermissionsInfo = _getVehiclePermissionsInfo;
+                vm.getVehiclePermissionsInfoSuccess = _getVehiclePermissionsInfoSuccess;
+                vm.getVehiclePermissionsInfoError = _getVehiclePermissionsInfoError;
 
-                var url = "https://auth.smartcar.com/oauth/token";
+                vm.getVehicleLocationInfo = _getVehicleLocationInfo;
+                vm.getVehicleLocationInfoSuccess = _getVehicleLocationInfoSuccess;
+                vm.getVehicleLocationInfoError = _getVehicleLocationInfoError;
 
-                $.ajaxSetup({
+                vm.flashHeadlights = _flashHeadlights;
+                vm.flashHeadlightsSuccess = _flashHeadlightsSuccess;
+                vm.flashHeadlightsError = _flashHeadlightsError;
 
-                    headers: {
-                        'Authorization': 'Basic base64(d0d419a5-ca7d-4e34-9fd4-cccf4bddd33f:2ee05bc8-f40c-4868-984d-6cf76facf3d2)',
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'Access-Control-Allow-Origin': '*'
+                vm.panicMode = _panicMode;
+                vm.panicModeSuccess = _panicModeSuccess;
+                vm.panicModeError = _panicModeError;
+
+                vm.unlockDoors = _unlockDoors;
+                vm.unlockDoorsSuccess = _unlockDoorsSuccess;
+                vm.unlockDoorsError = _unlockDoorsError;
+
+
+                vm.headlights = false;
+                vm.panic = false;
+                vm.locks = false;
+                vm.location = false;
+
+
+
+                vm.$onInit = _init;
+
+                function _init() {
+                    _getToken(); 
+                };
+
+                vm.string = window.location.search;
+                vm.string = vm.string.split("code=")[1];
+                if (vm.string)
+                    console.log(vm.string);
+
+                vm.payload = "grant_type=authorization_code&code=" +
+                    vm.string +
+                    "&redirect_uri=http://localhost:3024/oauth/smartcar";
+
+                function _getToken() {
+                    vm.getAccessToken(vm.payload, vm.getAccessTokenSuccess, vm.getAccessTokenError);
+                }
+
+                function _getAPI() {
+                    vm.getSmartcarAPI(vm.getSmartcarSuccess, vm.getSmartcarError);
+                }
+
+                function _getVehicleInfo() {
+                    vm.getVehicle(vm.getVehicleSuccess, vm.getVehicleError);
+                }
+
+                function _getVehiclePermissions() {
+                    vm.getVehiclePermissionsInfo(vm.getVehiclePermissionsInfoSuccess, vm.getVehiclePermissionsInfoError);
+                }
+
+                function _getVehicleLocation() {
+                    vm.getVehicleLocationInfo(vm.getVehicleLocationInfoSuccess, vm.getVehicleLocationInfoError);
+                }
+
+                function _panicButton() {
+                    vm.headlightsModel = {
+                        "action": "FLASH",
+                        "type": "LOW_BEAM"
                     }
 
-                });
+                    // flash headlights
+                    vm.flashHeadlights(JSON.stringify(vm.headlightsModel), vm.flashHeadlightsSuccess, vm.flashHeadlightsError);
 
-                var settings = {
-                    cache: false // set to false so we always obtain the latest data
-                    , contentType: "application/x-www-form-urlencoded; charset=UTF-8" // format of the data being sent to the database
-                    , dataType   : "json" // format of the data we're receiving back in our responses
-                    , data       : entityData
-                    , success    : onSuccess // showing what will happen on successes
-                    , error      : onError // showing what will happen on errors
-                    , type       : "POST" // method
-                };
-                $.ajax(url, settings);
+                    vm.headlights = true;
+                    
+                    vm.panicModeModel = {
+                        "action": "START"
+                    }
+
+                    // panic mode
+                    vm.panicMode(JSON.stringify(vm.panicModeModel), vm.panicModeSuccess, vm.panicModeError);
+
+                    vm.panic = true;
+                    
+                    vm.unlockDoorsModel = {
+                        "action": "UNLOCK"
+                    }
+
+                    // unlock doors
+                    vm.unlockDoors(JSON.stringify(vm.unlockDoorsModel), vm.unlockDoorsSuccess, vm.unlockDoorsError);
+
+                    vm.locks = true;
+
+                    // get vehicle location
+                    vm.getVehicleLocation();
+
+                    vm.location = true;
+                }
+
+                // post method
+                function _getAccessToken(entityData, onSuccess, onError) {
+
+                    var url = "https://auth.smartcar.com/oauth/token";
+
+                    $.ajaxSetup({
+                        headers: {
+                            //'Authorization': 'Basic base64(d0d419a5-ca7d-4e34-9fd4-cccf4bddd33f:2ee05bc8-f40c-4868-984d-6cf76facf3d2)',
+                            'Authorization': 'Basic ZDBkNDE5YTUtY2E3ZC00ZTM0LTlmZDQtY2NjZjRiZGRkMzNmOjJlZTA1YmM4LWY0MGMtNDg2OC05ODRkLTZjZjc2ZmFjZjNkMg==',
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        }
+                    });
+
+                    var settings = {
+                        cache: false // set to false so we always obtain the latest data
+                        ,
+                        contentType:
+                            "application/x-www-form-urlencoded; charset=UTF-8" // format of the data being sent to the database
+                        ,
+                        dataType: "json" // format of the data we're receiving back in our responses
+                        ,
+                        data: entityData,
+                        success: onSuccess // showing what will happen on successes
+                        ,
+                        error: onError // showing what will happen on errors
+                        ,
+                        type: "POST" // method
+                    };
+                    $.ajax(url, settings);
+                }
+
+                function _getAccessTokenSuccess(response) {
+                    vm.accessToken = response.access_token;
+                    console.log(response);
+                    //console.log(vm.accessToken);
+                    $scope.$apply();
+                    _getAPI();
+                }
+
+                function _getAccessTokenError(data, status, xhr) {
+
+                    console.log('post error');
+
+                    console.log('bruh, do you even code??!');
+                    console.log(data.responseText + ' ' + data.status + ' ' + xhr);
+                }
+
+                // get method
+                function _getSmartcarAPI(onSuccess, onError) {
+
+                    var url = "https://api.smartcar.com/v1.0/vehicles";
+
+                    $.ajaxSetup({
+                        headers: {
+                            //'Authorization': 'Basic base64(d0d419a5-ca7d-4e34-9fd4-cccf4bddd33f:2ee05bc8-f40c-4868-984d-6cf76facf3d2)',
+                            'Authorization': 'Bearer ' + vm.accessToken,
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        }
+                    });
+
+                    var settings = {
+                        cache: false // set to false so we always obtain the latest data
+                        , contentType: "application/x-www-form-urlencoded; charset=UTF-8" // format of the data being sent to the database
+                        , dataType: "json" // format of the data we're receiving back in our responses
+                        , success: onSuccess// showing what will happen on successes
+                        , error: onError // showing what will happen on errors
+                        , type: "GET" // method
+                    };
+                    $.ajax(url, settings);
+                }
+
+                function _getSmartcarSuccess(data) {
+                    vm.APIVehicles = data.vehicles[0];
+                    //console.log(vm.APIVehicles);
+
+                    vm.vehicleArray = data.vehicles;
+
+
+                    console.log(data);
+                    $scope.$apply();
+                }
+
+                function _getSmartcarError(data, status, xhr) {
+                    console.log('bruh, do you even code??!');
+                    console.log(data.responseText + ' ' + data.status + ' ' + xhr);
+                }
+
+                // get method
+                function _getVehicle(onSuccess, onError) {
+
+                    var url = "https://api.smartcar.com/v1.0/vehicles/" + vm.vehicleModel;
+
+                    $.ajaxSetup({
+                        headers: {
+                            //'Authorization': 'Basic base64(d0d419a5-ca7d-4e34-9fd4-cccf4bddd33f:2ee05bc8-f40c-4868-984d-6cf76facf3d2)',
+                            'Authorization': 'Bearer ' + vm.accessToken,
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        }
+                    });
+
+                    var settings = {
+                        cache: false // set to false so we always obtain the latest data
+                        , contentType: "application/x-www-form-urlencoded; charset=UTF-8" // format of the data being sent to the database
+                        , dataType: "json" // format of the data we're receiving back in our responses
+                        , success: onSuccess// showing what will happen on successes
+                        , error: onError // showing what will happen on errors
+                        , type: "GET" // method
+                    };
+                    $.ajax(url, settings);
+                }
+
+                function _getVehicleSuccess(data) {
+                    vm.vehicleInfo = data;
+                    console.log(data);
+                    $scope.$apply();
+                    _getVehiclePermissions();
+                }
+
+                function _getVehicleError(data, status, xhr) {
+                    console.log('bruh, do you even code??!');
+                    console.log(data.responseText + ' ' + data.status + ' ' + xhr);
+                }
+
+                // get method
+                function _getVehiclePermissionsInfo(onSuccess, onError) {
+
+                    var url = "https://api.smartcar.com/v1.0/vehicles/" + vm.APIVehicles + "/permissions";
+
+                    $.ajaxSetup({
+                        headers: {
+                            //'Authorization': 'Basic base64(d0d419a5-ca7d-4e34-9fd4-cccf4bddd33f:2ee05bc8-f40c-4868-984d-6cf76facf3d2)',
+                            'Authorization': 'Bearer ' + vm.accessToken,
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        }
+                    });
+
+                    var settings = {
+                        cache: false // set to false so we always obtain the latest data
+                        , contentType: "application/x-www-form-urlencoded; charset=UTF-8" // format of the data being sent to the database
+                        , dataType: "json" // format of the data we're receiving back in our responses
+                        , success: onSuccess// showing what will happen on successes
+                        , error: onError // showing what will happen on errors
+                        , type: "GET" // method
+                    };
+                    $.ajax(url, settings);
+                }
+
+                function _getVehiclePermissionsInfoSuccess(data) {
+                    vm.vehiclePermissionInfo = data;
+                    console.log(data);
+                    $scope.$apply();
+                    vm.vehicleActionsArray = data.permissions;
+                }
+
+                function _getVehiclePermissionsInfoError(data, status, xhr) {
+                    console.log('bruh, do you even code??!');
+                    console.log(data.responseText + ' ' + data.status + ' ' + xhr);
+                }
+
+                // get method
+                function _getVehicleLocationInfo(onSuccess, onError) {
+
+                    var url = "https://api.smartcar.com/v1.0/vehicles/" + vm.APIVehicles + "/location";
+
+                    $.ajaxSetup({
+                        headers: {
+                            //'Authorization': 'Basic base64(d0d419a5-ca7d-4e34-9fd4-cccf4bddd33f:2ee05bc8-f40c-4868-984d-6cf76facf3d2)',
+                            'Authorization': 'Bearer ' + vm.accessToken,
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        }
+                    });
+
+                    var settings = {
+                        cache: false // set to false so we always obtain the latest data
+                        , contentType: "application/x-www-form-urlencoded; charset=UTF-8" // format of the data being sent to the database
+                        , dataType: "json" // format of the data we're receiving back in our responses
+                        , success: onSuccess// showing what will happen on successes
+                        , error: onError // showing what will happen on errors
+                        , type: "GET" // method
+                    };
+                    $.ajax(url, settings);
+                }
+
+                function _getVehicleLocationInfoSuccess(data) {
+                    vm.vehicleLocationInfo = data;
+                    console.log(data);
+                    $scope.$apply();
+                }
+
+                function _getVehicleLocationInfoError(data, status, xhr) {
+                    console.log('bruh, do you even code??!');
+                    console.log(data.responseText + ' ' + data.status + ' ' + xhr);
+                }   
+
+
+
+
+                // post method
+                function _flashHeadlights(entityData, onSuccess, onError) {
+
+                    var url = "https://api.smartcar.com/v1.0/vehicles/" + vm.vehicleModel + "/lights/headlights";
+                    console.log(url);
+                    console.log(vm.headlightsModel);
+                    console.log(vm.accessToken);
+                    $.ajaxSetup({
+                        headers: {
+                            //'Authorization': 'Basic base64(d0d419a5-ca7d-4e34-9fd4-cccf4bddd33f:2ee05bc8-f40c-4868-984d-6cf76facf3d2)',
+                            'Authorization': 'Bearer ' + vm.accessToken,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    var settings = {
+                        "crossDomain": true,
+                        cache: false // set to false so we always obtain the latest data
+                        ,contentType: "application/json; charset=UTF-8" // format of the data being sent to the database
+                        ,dataType: "json" // format of the data we're receiving back in our responses
+                        ,data: entityData
+                        ,success: onSuccess // showing what will happen on successes
+                        ,error: onError // showing what will happen on errors
+                        ,type: "POST" // method
+                    };
+                    $.ajax(url, settings);
+                }
+
+                function _flashHeadlightsSuccess(response) {
+                    console.log(response);
+                }
+
+                function _flashHeadlightsError(data, status, xhr) {
+                    console.log('flash headlights error');
+
+                    console.log('bruh, do you even code??!');
+                    console.log(data.responseText + ' ' + data.status + ' ' + xhr);
+                }
+
+                // post method
+                function _panicMode(entityData, onSuccess, onError) {
+
+                    var url = "https://api.smartcar.com/v1.0/vehicles/" + vm.vehicleModel + "/panic";
+
+                    $.ajaxSetup({
+                        headers: {
+                            //'Authorization': 'Basic base64(d0d419a5-ca7d-4e34-9fd4-cccf4bddd33f:2ee05bc8-f40c-4868-984d-6cf76facf3d2)',
+                            'Authorization': 'Bearer ' + vm.accessToken,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    var settings = {
+                        cache: false // set to false so we always obtain the latest data
+                        , contentType: "application/json; charset=UTF-8" // format of the data being sent to the database
+                        , dataType: "json" // format of the data we're receiving back in our responses
+                        , data: entityData
+                        , success: onSuccess // showing what will happen on successes
+                        , error: onError // showing what will happen on errors
+                        , type: "POST" // method
+                    };
+                    $.ajax(url, settings);
+                }
+
+                function _panicModeSuccess(response) {
+                    console.log(response);
+                }
+
+                function _panicModeError(data, status, xhr) {
+                    console.log('panic mode error');
+
+                    console.log('bruh, do you even code??!');
+                    console.log(data.responseText + ' ' + data.status + ' ' + xhr);
+                }
+
+                // post method
+                function _unlockDoors(entityData, onSuccess, onError) {
+
+                    var url = "https://api.smartcar.com/v1.0/vehicles/" + vm.vehicleModel + "/security";
+
+                    $.ajaxSetup({
+                        headers: {
+                            //'Authorization': 'Basic base64(d0d419a5-ca7d-4e34-9fd4-cccf4bddd33f:2ee05bc8-f40c-4868-984d-6cf76facf3d2)',
+                            'Authorization': 'Bearer ' + vm.accessToken,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    var settings = {
+                        cache: false // set to false so we always obtain the latest data
+                        , contentType: "application/json; charset=UTF-8" // format of the data being sent to the database
+                        , dataType: "json" // format of the data we're receiving back in our responses
+                        , data: entityData
+                        , success: onSuccess // showing what will happen on successes
+                        , error: onError // showing what will happen on errors
+                        , type: "POST" // method
+                    };
+                    $.ajax(url, settings);
+                }
+
+                function _unlockDoorsSuccess(response) {
+                    console.log(response);
+                }
+
+                function _unlockDoorsError(data, status, xhr) {
+                    console.log('unlock doors error');
+
+                    console.log('bruh, do you even code??!');
+                    console.log(data.responseText + ' ' + data.status + ' ' + xhr);
+                }
             }
-
-            function _postEntitySuccess(response) {
-
-                var id = response.item;
-
-                console.log(id);
-
-            }
-
-            function _postEntityError(data, status, xhr) {
-
-                console.log('post error');
-
-                console.log('bruh, do you even code??!');
-                console.log(data.responseText + ' ' + data.status + ' ' + xhr);
-            }
-
-        }
-    })();
-</script>
+        })();
+    </script>
 }
