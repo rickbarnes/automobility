@@ -838,6 +838,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap1.css" />
+    <Content Include="Content\bootstrap1.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\theme.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
@@ -1393,9 +1395,12 @@
     <Content Include="fonts\ionicons.eot" />
     <Content Include="fonts\ionicons.ttf" />
     <Content Include="fonts\ionicons.woff" />
+    <Content Include="Content\bootstrap1.css.map" />
+    <Content Include="Content\bootstrap1.min.css.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Controller\addSpotController.js" />
     <Content Include="Scripts\Controller\graphController.js" />
     <Content Include="Scripts\Controller\home.controller.js" />
     <Content Include="Scripts\Controller\ItineraryController.js" />
@@ -1426,7 +1431,6 @@
     <Content Include="Scripts\angular-ui-router.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\Controller\home.controller.js" />
     <Content Include="Scripts\Controller\ItineraryController.js" />
     <Content Include="Scripts\Controllers\SignalRController.js" />
     <Content Include="Scripts\jquery.signalR-2.2.2.js" />
@@ -1478,7 +1482,9 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Views\Home\SignUp.cshtml" />
+    <Content Include="Views\Shared\_MemberLayout.cshtml" />
     <Content Include="Views\Home\parkingZone.cshtml" />
+    <Content Include="Views\Home\AddSpot.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -19,8 +19,13 @@
         };
 
         // POST
-        function _post(apiendpoint, data) {
-            return $http.post(apiendpoint, data)
+        function _post(apiendpoint, data, header) {
+            return $http({ /*.post(apiendpoint, data, headers)*/
+                method: 'POST',
+                url: apiendpoint,
+                data: data,
+                headers: header
+                })
                 .then(_postComplete)
                 .catch(_postFailed);
 
