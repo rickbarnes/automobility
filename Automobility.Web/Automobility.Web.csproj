@@ -1164,6 +1164,7 @@
     <Content Include="images\gallery7.png" />
     <Content Include="images\gallery8.png" />
     <Content Include="images\gallery9.png" />
+    <Content Include="images\Graph.JPG" />
     <Content Include="images\hexagon.png" />
     <Content Include="images\index-device.png" />
     <Content Include="images\index-hero.jpg" />
@@ -1395,6 +1396,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Controller\graphController.js" />
     <Content Include="Scripts\Controller\home.controller.js" />
     <Content Include="Scripts\Controller\ItineraryController.js" />
     <Content Include="Scripts\Controller\mapController.js" />
@@ -1405,6 +1407,7 @@
     <Content Include="Scripts\mainService.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Site\app.js" />
+    <Content Include="Scripts\Template\GraphTemplate.html" />
     <Content Include="Scripts\Template\MapTemplate.html" />
     <Content Include="Scripts\Vendor\theme.min.js" />
     <Content Include="Scripts\_references.js" />

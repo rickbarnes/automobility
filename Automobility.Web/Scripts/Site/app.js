@@ -3,7 +3,7 @@
 (function (ngAppName) {
 
     //(name of application first, second spot is array of dependencies)
-    var app = angular.module(ngAppName, ['ngMaterial']);
+    var app = angular.module(ngAppName, ['ngMaterial', "ui.bootstrap"]);
 
 
 })(AppName);
