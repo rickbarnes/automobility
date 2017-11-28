@@ -290,6 +290,11 @@
         vm.ampm = null;
         vm.confirmRide = _confirmRide;
         vm.confirm = _confirm;
+        vm.chooseSpot = _chooseSpot;
+
+        function _chooseSpot() {
+            $('.bgImg0').fadeOut('slow');
+        }
 
         function _confirmRide() {
             $('#searchAndPlan').slideUp('slow');
