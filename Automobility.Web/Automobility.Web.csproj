@@ -1399,6 +1399,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Controller\addSpotController.js" />
     <Content Include="Scripts\Controller\home.controller.js" />
     <Content Include="Scripts\Controller\ItineraryController.js" />
     <Content Include="Scripts\Controller\mapController.js" />
@@ -1481,6 +1482,7 @@
     <Content Include="Views\Home\SignUp.cshtml" />
     <Content Include="Views\Shared\_MemberLayout.cshtml" />
     <Content Include="Views\Home\parkingZone.cshtml" />
+    <Content Include="Views\Home\AddSpot.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
