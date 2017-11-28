@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "AddSpot";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+   
+    <div ng-controller="addSpotController as addSCtrl" layout="column" ng-cloak="" class="md-inline-form inputdemoBasicUsage" ng-app="HondaHack">
+
+        <div class="col-sm-12">
+            <h3 class="navbar-brand">Parking Spot Info</h3>
+            <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding="">
+                <div>
+                    <md-input-container>
+                        <label>Email</label>
+                        <input ng-model="user.email" type="email">
+                    </md-input-container>
+                </div>
+            </md-content>
+
+            <md-content layout-padding="">
+                <div>
+                    <form name="userForm">
+
+
+                        <md-input-container class="md-block" flex-gt-xs="">
+                            <label>Business Name</label>
+                            <input ng-model="user.business">
+                        </md-input-container>
+
+                        <div layout-gt-sm="row">
+                            <md-input-container class="md-block" flex-gt-sm="">
+                                <label>Full name</label>
+                                <input ng-model="user.fullName">
+                            </md-input-container>
+
+                        </div>
+
+                        <md-input-container class="md-block">
+                            <label>Address</label>
+                            <input ng-model="user.address">
+                        </md-input-container>
+
+                        <md-input-container md-no-float="" class="md-block">
+                            <input ng-model="user.address2" placeholder="Address 2">
+                        </md-input-container>
+
+                        <div layout-gt-sm="row">
+                            <md-input-container class="md-block" flex-gt-sm="">
+                                <label>City</label>
+                                <input ng-model="user.city">
+                            </md-input-container>
+
+
+                            <md-input-container>
+                                <label>Postal Code</label>
+                                <input name="postalCode" ng-model="user.postalCode" placeholder="12345" required="" ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+
+                                <div ng-messages="userForm.postalCode.$error" role="alert" multiple="">
+                                    <div ng-message="required" class="my-message">You must supply a postal code.</div>
+                                    <div ng-message="pattern" class="my-message">
+                                        That doesn't look like a valid postal
+                                        code.
+                                    </div>
+                                    <div ng-message="md-maxlength" class="my-message">
+                                        Don't use the long version silly...we don't need to be that specific...
+                                    </div>
+                                </div>
+                            </md-input-container>
+                        </div>
+
+                        <div layout-gt-xs="row">
+
+
+                            <md-input-container>
+                                <label>Enter date</label>
+                                <md-datepicker ng-model="user.startDate"></md-datepicker>
+                            </md-input-container>
+
+                            <md-input-container>
+                                <label>End Date</label>
+                                <md-datepicker ng-model="user.endDate"></md-datepicker>
+                            </md-input-container>
+
+                        </div>
+
+                        <md-input-container class="md-block">
+                            <label>Additional Info</label>
+                            <textarea ng-model="user.biography" md-maxlength="150" rows="2" md-select-on-focus=""></textarea>
+                        </md-input-container>
+
+                    </form>
+                </div>
+
+            </md-content>
+        </div>
+    </div>
+
+</body>
+</html>
