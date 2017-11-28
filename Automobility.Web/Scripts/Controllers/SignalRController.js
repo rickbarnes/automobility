@@ -5,7 +5,7 @@
 
     angular
         .module(AppName)
-        .controller("signalRContoller", SignalRController);
+        .controller("signalRController", SignalRController);
 
     SignalRController
         .$inject = ["$scope"];
