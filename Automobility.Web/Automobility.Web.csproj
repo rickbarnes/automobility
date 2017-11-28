@@ -830,6 +830,10 @@
     <Content Include="bower_components\angular-messages\LICENSE.md" />
     <Content Include="bower_components\angular-messages\package.json" />
     <Content Include="bower_components\angular-messages\README.md" />
+    <Content Include="bower_components\toastr\toastr.css" />
+    <Content Include="bower_components\toastr\toastr.js" />
+    <Content Include="bower_components\toastr\toastr.min.css" />
+    <Content Include="bower_components\toastr\toastr.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css" />
@@ -1171,6 +1175,8 @@
     <Content Include="images\index-device.png" />
     <Content Include="images\index-hero.jpg" />
     <Content Include="images\index-hero.png" />
+    <Content Include="images\localhost_3024_InTransit%28iPhone 6%29 %281%29.png" />
+    <Content Include="images\localhost_3024_InTransit%28iPhone 6%29 %282%29.png" />
     <Content Include="images\logo-dark.png" />
     <Content Include="images\logo-light.png" />
     <Content Include="images\logos\apple.png" />
@@ -1397,6 +1403,13 @@
     <Content Include="fonts\ionicons.woff" />
     <Content Include="Content\bootstrap1.css.map" />
     <Content Include="Content\bootstrap1.min.css.map" />
+    <Content Include="bower_components\toastr\.bower.json" />
+    <Content Include="bower_components\toastr\bower.json" />
+    <Content Include="bower_components\toastr\LICENSE" />
+    <Content Include="bower_components\toastr\README.md" />
+    <Content Include="bower_components\toastr\toastr.js.map" />
+    <Content Include="bower_components\toastr\toastr.less" />
+    <Content Include="bower_components\toastr\toastr.scss" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

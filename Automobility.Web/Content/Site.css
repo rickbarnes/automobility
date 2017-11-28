@@ -89,7 +89,7 @@ md-grid-tile-footer h3 {
 }
 
 .myHeight {
-    height: 376px;
+    height: 430px;
 }
 
 .myImage {
@@ -97,8 +97,79 @@ md-grid-tile-footer h3 {
     height: 100px;
 }
 
-#food, #landmarks, #backBtn {
+#food, #landmarks, #backBtn, #planDetails, #confirmDetails, #onRoute, #eta, #rideDetails {
     display: none;
+}
+
+.graphImg {
+    width:100%; 
+    height:auto;
+}
+.planHeight {
+    height: 440px;
+}
+
+.confirmHeight {
+    height: 620px;
+    width: 375px;
+}
+
+img.bgImg {
+    /* Set rules to fill background */
+    min-height: 667px;
+    min-width: 375px;
+    /* Set up proportionate scaling */
+    width: auto;
+    height: 100%;
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+img.bgImg2 {
+    /* Set rules to fill background */
+    min-height: 667px;
+    min-width: 375px;
+    /* Set up proportionate scaling */
+    width: auto;
+    height: 100%;
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.navBottom {
+    background: #3F51B5;
+    height: 49px;
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+}
+
+.navMiddle {
+    background: white;
+    height: 116px;
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+    bottom: 49px;
+}
+
+.navTop {
+    background: white;
+    height: 62px;
+    width: 100%;
+    z-index: 0;
+    position: absolute;
+    top: 0;
+}
+
+#eta h2 {
+    padding-bottom: 20px;
 }
 
 /*green - #10a453 yellow - ebf937 red - ed4429 blue - 01acee black - 090909*/
