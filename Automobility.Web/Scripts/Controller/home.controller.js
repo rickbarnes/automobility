@@ -4,9 +4,9 @@
     angular.module(AppName)
         .controller("homeController", HomeController);
 
-    HomeController.$inject = ["$scope", "$location", "$mdSidenav"];
+    HomeController.$inject = ["$scope", "$location", "$mdSidenav", "$timeout", "$log", "$q"];
 
-    function HomeController($scope, $location, $mdSidenav) {
+    function HomeController($scope, $location, $mdSidenav, $timeout, $log, $q) {
         var vm = this;
         vm.$scope = $scope;
         vm.$location = $location;
@@ -16,6 +16,18 @@
         vm.buildToggler = _buildToggler;
         vm.toggleLeft = vm.buildToggler('left');
         vm.toggleRight = vm.buildToggler('right');
+        // autocomplete
+        vm.simulateQuery = true;
+        // list of `state` value/display objects
+        vm.states = loadAll();
+        vm.querySearch = querySearch;
+        vm.selectedItemChange = selectedItemChange;
+        vm.searchTextChange = searchTextChange;
+        vm.newState = newState;
+
+        function newState(state) {
+            alert("Sorry! You'll need to create a Constitution for " + state + " first!");
+        }
         vm.restTimeSchedule = {
             Ten: 15,
             TenThirty: 1,
@@ -269,6 +281,51 @@
         vm.model = [];
         vm.showDetails = _showDetails;
 
+        // autocomplete
+        function querySearch(query) {
+            var results = query ? vm.states.filter(createFilterFor(query)) : vm.states,
+                deferred;
+            if (vm.simulateQuery) {
+                deferred = $q.defer();
+                $timeout(function () { deferred.resolve(results); }, Math.random() * 1000, false);
+                return deferred.promise;
+            } else {
+                return results;
+            }
+        }
+
+        function searchTextChange(text) {
+            $log.info('Text changed to ' + text);
+        }
+
+        function selectedItemChange(item) {
+            $log.info('Item changed to ' + JSON.stringify(item));
+        }
+
+        function loadAll() {
+            var allStates = 'Hollywood, Downtown, Echo Park';
+
+            return allStates.split(/, +/g).map(function (state) {
+                return {
+                    value: state.toLowerCase(),
+                    display: state
+                };
+            });
+        }
+
+        /**
+         * Create filter function for a query string
+         */
+        function createFilterFor(query) {
+            var lowercaseQuery = angular.lowercase(query);
+
+            return function filterFn(state) {
+                return (state.value.indexOf(lowercaseQuery) === 0);
+            };
+
+        }
+
+
         function _showDetails(i) {
             if (i == 'landmarks') {
                 vm.model = vm.landmarkModel;
@@ -288,7 +345,5 @@
                 $mdSidenav(componentId).toggle();
             };
         }
-
     }
-
 })();

@@ -38,11 +38,20 @@
             <br />
             <br />
             <div class="col-xs-12">
-                <form>
-                    <md-input-container class="maxWidth text-center" layout-align="center center">
+                <form ng-submit="$event.preventDefault()">
+                    <md-autocomplete class="autocomplete" md-no-cache="homeCtrl.noCache" md-selected-item="homeCtrl.selectedItem" md-search-text-change="homeCtrl.searchTextChange(homeCtrl.searchText)" md-search-text="homeCtrl.searchText" md-selected-item-change="homeCtrl.selectedItemChange(item)" md-items="item in homeCtrl.querySearch(homeCtrl.searchText)" md-item-text="item.display" md-min-length="0" placeholder="Where would you like to go?">
+                        <md-item-template>
+                            <span md-highlight-text="homeCtrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            No states matching "{{homeCtrl.searchText}}" were found.
+                            <a ng-click="homeCtrl.newState(homeCtrl.searchText)">Create a new one!</a>
+                        </md-not-found>
+                    </md-autocomplete>
+                    @*<md-input-container class="maxWidth text-center" layout-align="center center">
                         <label>Where would you like to go?</label>
                         <input type="text" ng-model="homeCtrl.search" class="md-input" />
-                    </md-input-container>
+                    </md-input-container>*@
                 </form>
             </div>
         </div>
