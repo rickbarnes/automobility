@@ -838,6 +838,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap1.css" />
+    <Content Include="Content\bootstrap1.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\theme.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
@@ -1392,11 +1394,14 @@
     <Content Include="fonts\ionicons.eot" />
     <Content Include="fonts\ionicons.ttf" />
     <Content Include="fonts\ionicons.woff" />
+    <Content Include="Content\bootstrap1.css.map" />
+    <Content Include="Content\bootstrap1.min.css.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Controller\home.controller.js" />
     <Content Include="Scripts\Controller\ItineraryController.js" />
+    <Content Include="Scripts\Controller\mapController.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -1404,6 +1409,7 @@
     <Content Include="Scripts\mainService.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Site\app.js" />
+    <Content Include="Scripts\Template\MapTemplate.html" />
     <Content Include="Scripts\Vendor\theme.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\angular.js" />
@@ -1473,6 +1479,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Views\Home\SignUp.cshtml" />
+    <Content Include="Views\Shared\_MemberLayout.cshtml" />
     <Content Include="Views\Home\parkingZone.cshtml" />
   </ItemGroup>
   <ItemGroup>

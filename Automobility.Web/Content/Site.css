@@ -25,7 +25,7 @@ textarea {
 
 md-input-container {
     width: 100%;
-    font-size: 23px;
+    font-size: 20px;
 }
 
 .fa-md {
@@ -80,6 +80,10 @@ md-grid-tile-footer h3 {
     width: 100%;
     margin: 0;
     text-align: center;
+}
+
+.myPadding {
+    padding: 0px 5px;
 }
 
 /*green - #10a453 yellow - ebf937 red - ed4429 blue - 01acee black - 090909*/

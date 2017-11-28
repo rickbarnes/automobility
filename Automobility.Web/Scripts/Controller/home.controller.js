@@ -266,22 +266,18 @@
                 Distance: "4.8 Miles"
             }
         ];
-        vm.showRest = _showRest;
-        vm.showLandMark = _showlandMark;
-        vm.model = {};
+        vm.model = [];
+        vm.showDetails = _showDetails;
 
+        function _showDetails(i) {
+            if (i == 'landmarks') {
+                vm.model = vm.landmarkModel;
 
-        function _showRest() {
-            console.log("hi");
-
-            vm.model = vm.restaurantsModel;
-            console.log(vm.model);
+            } else if (i == 'rest') {
+                vm.model = vm.restaurantsModel;
+            }
+            $('#detailsModal').modal('show');
         }
-
-        function _showlandMark() {
-            vm.model = vm.landmarkModel;
-        }
-
 
         function _onInit() {
             console.log("Home controller initiated");

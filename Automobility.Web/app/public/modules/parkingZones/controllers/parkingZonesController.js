@@ -12,15 +12,15 @@
         $log.log("hi")
 
         function _onInit() {
-
-            for (var i = 0; i < features.length; i++) {
-                var status = features[i].properties.SENSOR_STATUS
-                if (status == 0) {
-                    $log.log(features[i].properties.ADDRESS_SPACE + " " + "available")
-                } else {
-                    $log.log(features[i].properties.ADDRESS_SPACE + "   " + "unavailable")
-                }
-            }
+            console.log("working");
+            //for (var i = 0; i < features.length; i++) {
+            //    var status = features[i].properties.SENSOR_STATUS
+            //    if (status == 0) {
+            //        $log.log(features[i].properties.ADDRESS_SPACE + " " + "available")
+            //    } else {
+            //        $log.log(features[i].properties.ADDRESS_SPACE + "   " + "unavailable")
+            //    }
+            //}
 
 
         };
