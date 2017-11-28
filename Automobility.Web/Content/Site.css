@@ -89,7 +89,7 @@ md-grid-tile-footer h3 {
 }
 
 .myHeight {
-    height: 376px;
+    height: 430px;
 }
 
 .myImage {
@@ -97,8 +97,20 @@ md-grid-tile-footer h3 {
     height: 100px;
 }
 
-#food, #landmarks, #backBtn {
+#food, #landmarks, #backBtn, #planDetails, #confirmDetails {
     display: none;
+}
+
+.graphImg {
+    width:100%; 
+    height:auto;
+}
+.planHeight {
+    height: 440px;
+}
+
+.confirmHeight {
+    height: 620px;
 }
 
 /*green - #10a453 yellow - ebf937 red - ed4429 blue - 01acee black - 090909*/
