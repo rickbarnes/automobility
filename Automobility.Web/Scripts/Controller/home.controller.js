@@ -11,6 +11,7 @@
         vm.$scope = $scope;
         vm.$location = $location;
         vm.$mdSidenav = $mdSidenav;
+        vm.$mdDialog = $mdDialog;
         vm.$onInit = _onInit;
         vm.search = "";
         vm.buildToggler = _buildToggler;
@@ -191,7 +192,7 @@
                 Name: "Hollywood",
                 Address: "5410 Hollywood Blvd",
                 City: "Los Angeles, CA 90027",
-
+                PhoneNumber: "(723) 626-1902",
                 Distance: "4.7 Miles"
             },
             {
@@ -278,8 +279,12 @@
                 Distance: "4.8 Miles"
             }
         ];
-        vm.model = [];
-        vm.showDetails = _showDetails;
+        vm.showFood = _showFood;
+        vm.showLandmarks = _showLandmarks;
+        vm.closeDetail = _closeDetail;
+        vm.goBack = false;
+        vm.model = {};
+        vm.showPrompt = _showPrompt;
 
         // autocomplete
         function querySearch(query) {
@@ -330,10 +335,6 @@
             if (i == 'landmarks') {
                 vm.model = vm.landmarkModel;
 
-            } else if (i == 'rest') {
-                vm.model = vm.restaurantsModel;
-            }
-            $('#detailsModal').modal('show');
         }
 
         function _onInit() {
@@ -345,5 +346,22 @@
                 $mdSidenav(componentId).toggle();
             };
         }
+
+        function _showFood() {
+            $('#grid, #food, #backBtn, #planYourTrip').slideToggle();
+        }
+
+        function _showLandmarks() {
+            $('#grid, #landmarks, #backBtn, #planYourTrip').slideToggle();
+        }
+
+        function _closeDetail() {
+            if ($('#food').is(':visible')) {
+                vm.showFood();
+            } else if ($('#landmarks').is(':visible')) {
+                vm.showLandmarks();
+            }
+        }
     }
+
 })();
