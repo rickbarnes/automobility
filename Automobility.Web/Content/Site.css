@@ -23,6 +23,20 @@ textarea {
     max-width: 280px;
 }
 
-.maxWidth {
-    width: 100% !important;
+md-input-container {
+    width: 100%;
+    font-size: 23px;
+}
+
+.fa-md {
+    height: auto;
+}
+
+.blackText {
+    color: black;
+}
+
+.divCenter {
+    display: block;
+    text-align: center;
 }
