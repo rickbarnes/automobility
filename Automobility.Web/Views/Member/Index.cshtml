@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<br />
+
+<div ng-controller="homeController as homeCtrl" ng-cloak>
+    <!-- start navbar -->
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
+        <!-- header -->
+        <md-toolbar class="md-theme-light">
+            <div class="md-toolbar-tools">
+                <span><md-icon md-font-icon="fa-user-circle" class="fa fa-2x fa-md md-icon bp profileIcon"> </md-icon> Rick Barnes</span>
+            </div>
+            <div class="div-56">
+
+            </div>
+        </md-toolbar>
+        <!-- menu options -->
+        <md-content layout-margin class="container">
+            <md-button class="md-primary">Profile</md-button>
+            <md-button class="md-primary">History</md-button>
+            <md-button class="md-primary">Settings</md-button>
+            <md-button class="md-primary">Legal</md-button>
+            <md-button class="md-primary">Logout</md-button>
+        </md-content>
+    </md-sidenav>
+    <!-- end navbar -->
+    <!-- start search input -->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-1">
+                <span><md-icon ng-click="homeCtrl.toggleLeft()" md-font-icon="fa-bars" class="blackText fa fa-2x fa-md md-icon-button"></md-icon></span>
+            </div>
+        </div>
+        <div class="row">
+            <br />
+            <br />
+            <br />
+            <div class="col-xs-12">
+                <form>
+                    <md-input-container class="maxWidth text-center" layout-align="center center">
+                        <label>Where would you like to go?</label>
+                        <input type="text" ng-model="homeCtrl.search" class="md-input" />
+                    </md-input-container>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <!-- end search input -->
+    <div>
+        <h2 class="text-center">Plan your trip</h2>
+        <div class="grid-list">
+            <md-grid-list md-cols-xs="2" md-cols-sm="2" md-cols-md="2" md-cols-gt-md="2" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px">
+                <md-grid-tile class="green">
+                    <md-icon md-font-icon="fa-futbol-o" class="fa fa-5x"></md-icon>
+                    <md-grid-tile-footer>
+                        <h3>Olympics</h3>
+                    </md-grid-tile-footer>
+                </md-grid-tile>
+
+                <md-grid-tile class="yellow">
+                    <md-icon md-font-icon="fa-cutlery" class="fa fa-5x"></md-icon>
+                    <md-grid-tile-footer>
+                        <h3>Food</h3>
+                    </md-grid-tile-footer>
+                </md-grid-tile>
+
+                <md-grid-tile class="red">
+                    <md-icon md-font-icon="fa-binoculars" class="fa fa-5x"></md-icon>
+                    <md-grid-tile-footer>
+                        <h3>Sights</h3>
+                    </md-grid-tile-footer>
+                </md-grid-tile>
+
+                <md-grid-tile class="blue">
+                    <md-icon md-font-icon="fa-thumbs-o-up" class="fa fa-5x"></md-icon>
+                    <md-grid-tile-footer>
+                        <h3>Fun</h3>
+                    </md-grid-tile-footer>
+                </md-grid-tile>
+
+            </md-grid-list>
+        </div>
+
+
+    </div>
+
+</div>
+
+
