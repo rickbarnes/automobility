@@ -5,7 +5,7 @@
 
 <h2>OAuth</h2>
 <div ng-controller="oAuthController as oac" ng-cloak>
-    <a href="https://mock.smartcar.com/oauth/authorize?response_type=code&client_id=d0d419a5-ca7d-4e34-9fd4-cccf4bddd33f&scope=read_odometer read_vehicle_info&redirect_uri=http://localhost:3024/oauth/smartcar">TEST</a>
+    <a href="https://mock.smartcar.com/oauth/authorize?response_type=code&client_id=d0d419a5-ca7d-4e34-9fd4-cccf4bddd33f&scope=read_odometer read_vehicle_info&redirect_uri=/oauth/smartcar">TEST</a>
     {{oac.string}}
     
     <input type="button" value="Get Token" ng-click="oac.getToken()" />
@@ -53,7 +53,7 @@
                 "Content-Type": "application/x-www-form-urlencoded"
             }
 
-            vm.data = "grant_type=authorization_code&code=" + vm.string + "&redirect_uri=http://localhost:3024";
+            vm.data = "grant_type=authorization_code&code=" + vm.string + "&redirect_uri=/";
 
             function _getToken() {
                 console.log(vm.data);

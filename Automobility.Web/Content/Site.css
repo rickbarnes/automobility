@@ -172,4 +172,19 @@ img.bgImg2 {
     padding-bottom: 20px;
 }
 
+img.bgImg0 {
+    /* Set rules to fill background */
+    min-height: 667px;
+    min-width: 375px;
+    /* Set up proportionate scaling */
+    width: auto;
+    height: 100%;
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+
 /*green - #10a453 yellow - ebf937 red - ed4429 blue - 01acee black - 090909*/

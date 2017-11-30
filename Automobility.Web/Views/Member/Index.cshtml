@@ -7,6 +7,7 @@
 <link href="~/Content/sweetalert.css" rel="stylesheet" />
 <div ng-controller="homeController as homeCtrl" ng-cloak>
     <div id="confirmDetails">
+        <img ng-click="homeCtrl.chooseSpot()" class="bgImg0" src="/images/mapthing2.png" />
         <img class="bgImg" src="/images/localhost_3024_InTransit(iPhone 6) (1).png" />
         <img class="bgImg2" src="~/images/localhost_3024_InTransit(iPhone 6) (2).png" />
         <div class="navTop">
@@ -31,12 +32,11 @@
         </div>
         <div class="navBottom text-center">
             <div id="confirmButtons">
-                <md-button class="md-button md-raised" ng-click="homeCtrl.confirm()">Confirm Ride</md-button>
+                <md-button id="confirmRideButton" class="md-button md-raised" ng-click="homeCtrl.confirm()">Confirm Ride</md-button>
                 <md-button class="md-button md-raised">Cancel</md-button>
             </div>
             <div id="eta">
-                <md-button ng-click="homeCtrl.sweetalert()" class="md-warn md-raised">STOP</md-button>
-                
+                <md-button class="md-warn md-raised" ng-click="homeCtrl.sweetalert()">STOP</md-button>                
             </div>
         </div>
     </div>

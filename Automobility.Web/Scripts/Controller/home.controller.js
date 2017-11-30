@@ -291,15 +291,21 @@
         vm.ampm = null;
         vm.confirmRide = _confirmRide;
         vm.confirm = _confirm;
+        vm.chooseSpot = _chooseSpot;
+        vm.sweetalert = _sweetalert;
+
+        function _chooseSpot() {
+            $('.bgImg0').fadeOut('slow');
+        }
         vm.login = _login;
         vm.goToLogin = goTo;
 
         function goTo() {
-            setTimeout(function () { window.location.href = 'http://localhost:3024/Home/SignUp'; }, 1000);
+            setTimeout(function () { window.location.href = '/Home/SignUp'; }, 1000);
         }
 
         function _login() {
-            setTimeout(function () { window.location.href = 'http://localhost:3024/Member/Index'; }, 1000);
+            setTimeout(function () { window.location.href = '/Member/Index'; }, 1000);
         }
 
         function _confirmRide() {
