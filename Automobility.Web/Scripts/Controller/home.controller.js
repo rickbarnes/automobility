@@ -291,6 +291,7 @@
         vm.confirmRide = _confirmRide;
         vm.confirm = _confirm;
         vm.chooseSpot = _chooseSpot;
+        vm.sweetalert = _sweetalert;
 
         function _chooseSpot() {
             $('.bgImg0').fadeOut('slow');
@@ -299,11 +300,11 @@
         vm.goToLogin = goTo;
 
         function goTo() {
-            setTimeout(function () { window.location.href = 'http://localhost:3024/Home/SignUp'; }, 1000);
+            setTimeout(function () { window.location.href = '/Home/SignUp'; }, 1000);
         }
 
         function _login() {
-            setTimeout(function () { window.location.href = 'http://localhost:3024/Member/Index'; }, 1000);
+            setTimeout(function () { window.location.href = '/Member/Index'; }, 1000);
         }
 
         function _confirmRide() {
@@ -406,6 +407,47 @@
             } else if ($('#landmarks').is(':visible')) {
                 vm.showLandmarks();
             }
+        }
+
+        function _sweetalert() {
+            console.log("sweet alert clicked");
+            (function () {
+                swal({
+                    title: "Are You Sure?",
+                    text: "This Will Stop Your Vehicle",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    cancelButtonText: "Cancel",
+                    confirmButtonText: "Yes, Stop My Vehicle",
+                    closeOnCancel: true,
+                    closeOnConfirm: false,
+                    reverseButtons: false
+
+                },
+                    function (isConfirm) {
+                        if (isConfirm) {
+                            swal({
+                                title: "Is This An Emergency?",
+                                text: "Warning, This Will Call Emergency Services",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                cancelButtonText: "Cancel",
+                                confirmButtonText: "This Is An Emergency",
+                                closeOnCancel: true,
+                                closeOnConfirm: false,
+                                reverseButtons: false
+
+                            },
+                                function (isConfirm) {
+                                    if (isConfirm) {
+                                        toastr.error("EMERGENCY SERVICES CALLED");
+                                    }
+                                });
+                        }
+                    });
+            })();
         }
 
     }
