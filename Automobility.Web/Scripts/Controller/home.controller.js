@@ -23,6 +23,7 @@
         vm.selectedItemChange = selectedItemChange;
         vm.searchTextChange = searchTextChange;
         vm.newState = newState;
+        vm.sweetalert = _sweetalert;
 
         function newState(state) {
             alert("Sorry! You'll need to create a Constitution for " + state + " first!");

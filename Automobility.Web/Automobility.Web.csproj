@@ -846,6 +846,7 @@
     <Content Include="Content\bootstrap1.css" />
     <Content Include="Content\bootstrap1.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\sweetalert.css" />
     <Content Include="Content\theme.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
@@ -1393,6 +1394,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Site\app.js" />
     <Content Include="Scripts\Template\GraphTemplate.html" />
+    <Content Include="Scripts\sweetalert.js" />
     <Content Include="Scripts\Template\MapTemplate.html" />
     <Content Include="Scripts\Vendor\theme.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -1465,6 +1467,7 @@
     <Content Include="Views\Shared\_MemberLayout.cshtml" />
     <Content Include="Views\Home\parkingZone.cshtml" />
     <Content Include="Views\Home\AddSpot.cshtml" />
+    <Content Include="Views\Member\InTransit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

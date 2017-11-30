@@ -3,7 +3,8 @@
     Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
 <br />
-
+<!-- sweetalert -->
+<link href="~/Content/sweetalert.css" rel="stylesheet" />
 <div ng-controller="homeController as homeCtrl" ng-cloak>
     <div id="confirmDetails">
         <img ng-click="homeCtrl.chooseSpot()" class="bgImg0" src="/images/mapthing2.png" />
@@ -35,8 +36,7 @@
                 <md-button class="md-button md-raised">Cancel</md-button>
             </div>
             <div id="eta">
-                <md-button class="md-warn md-raised" ng-click="homeCtrl.sweetalert()">STOP</md-button>
-                
+                <md-button class="md-warn md-raised" ng-click="homeCtrl.sweetalert()">STOP</md-button>                
             </div>
         </div>
     </div>
